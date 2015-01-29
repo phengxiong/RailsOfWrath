@@ -16,9 +16,15 @@ ingredients = ["mushrooms", "olives", "cheese"]
   recipe = Recipe.create(user_id: rand(0..100),
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
+<<<<<<< HEAD
                          directions: Lorem.sentences(sentence_count=3).join(","),
                          picture: Avatar.image(nil, "50x50"),
                          ingredients: ingredients[rand(0..2)],
+=======
+                         directions:  Lorem.sentences(sentence_count=3).join(","),
+                         picture: Avatar.image(nil, "50x50"),
+                         ingredients: ingredients,
+>>>>>>> origin/master
                          category: Company.suffix,
                          cook_time: Commerce.price.round(0),
                          prepare_time: Commerce.price.round(0),
