@@ -1,0 +1,23 @@
+body {
+    margin-top: 50px;
+}
+
+.navbar-inverse {
+    /* can override coloring for the navbar */
+
+}
+
+#foot {
+    padding-top: 75px;
+}
+
+#message {
+    float: right;
+    color: green;
+}
+
+#error {
+    float: right;
+    color: red;
+}
+
