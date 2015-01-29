@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+
+  resources :products, :path => "store/products"
+
   resources :recipes
 
   root 'page#Home'
 
   get '/recipes', to: 'recipes#index'
   get '/forum', to: 'page#forum', as: 'forum'
-  get '/store', to: 'page#store', as: 'store'
 
 
   resources :logins
