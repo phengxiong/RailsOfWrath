@@ -14,7 +14,6 @@ puts Name.name
 puts Company.bs
 
 
-
 Recipe.destroy_all
 ingredients = ""
 2.times do
@@ -35,7 +34,7 @@ ingredients = ""
 
   recipe = Recipe.create(title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
-                         directions:  Lorem.sentences(sentence_count=3).join(","),
+                         directions: Lorem.sentences(sentence_count=3).join(","),
                          picture: Avatar.image(nil, "350x350"),
                          ingredients: ingredients,
                          category: Company.suffix,
