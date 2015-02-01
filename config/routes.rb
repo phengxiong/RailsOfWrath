@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :products, :path => "store/products"
+	resources :products do
+		resources :reviews
+		get 'page/:page', :action => :index, :on => :collection
+	end
+
+  resources :products, :path => 'store/products'
 
   resources :recipes
 

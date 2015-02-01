@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129192007) do
+ActiveRecord::Schema.define(version: 20150201195802) do
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "quantity"
     t.float    "price"
     t.float    "cost"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20150129192007) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reviews", force: true do |t|
+    t.string   "author"
+    t.text     "comment"
+    t.integer  "rating"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
