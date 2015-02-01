@@ -1,4 +1,8 @@
 
+<div class="row">
+  <div class="col-md-6">
+
+
 
 <%= form_for(@recipe) do |f| %>
   <% if @recipe.errors.any? %>
@@ -13,43 +17,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :serving_size %><br>
-    <%= f.text_field :serving_size %>
+    <%= f.text_field :serving_size, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :directions %><br>
-    <%= f.text_field :directions %>
+    <%= f.text_field :directions, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :picture %><br>
-    <%= f.text_field :picture %>
+    <%= f.text_field :picture, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :ingredients %><br>
-    <%= f.text_area :ingredients %>
+    <%= f.text_area :ingredients, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.text_field :category, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :cook_time %><br>
-    <%= f.text_field :cook_time %>
+    <%= f.text_field :cook_time, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :prepare_time %><br>
-    <%= f.text_field :prepare_time %>
+    <%= f.text_field :prepare_time, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group">
+    <%= f.submit 'Update', :class => 'btn btn-success' %>
   </div>
 <% end %>
+
+  </div>
+</div>

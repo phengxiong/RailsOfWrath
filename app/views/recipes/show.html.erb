@@ -8,43 +8,32 @@
 <% end %>
 
 <p class="text-center">
-  <strong>Recipe by:</strong><%= @username %>
+  <strong>Recipe by: </strong><%= @username %>
 </p>
 <p class="text-center">
-  <strong>Prepare time:</strong><%= @recipe.prepare_time %> minutes
+  <strong>Prepare time: </strong><%= @recipe.prepare_time %> minutes
   <strong>Cook time:</strong><%= @recipe.cook_time %> minutes
 </p>
 
 <p class="text-center">
-  <strong>Category:</strong><%= @recipe.category %>
+  <strong>Category: </strong><%= @recipe.category %>
+</p>
+<p class="text-center">
+  <strong>Serving size: </strong><%= @recipe.serving_size %>
 </p>
 
 <div class="row">
   <div class="col-md-12">
-    <%= image_tag @recipe.picture, class: "img-responsive img-rounded center" %>
+    <%= image_tag @recipe.picture, class: "img-responsive img-rounded center image-show" %>
   </div>
 </div>
 
-
 <p>
-  <strong>Ingredients:</strong>
-  <%= @recipe.ingredients %>
-</p>
-
-
-
-
-
-
-
-<p>
-  <strong>Serving size:</strong>
-  <%= @recipe.serving_size %>
+  <strong>Ingredients: </strong><%= @recipe.ingredients %>
 </p>
 
 <p>
-  <strong>Directions:</strong>
-  <%= @recipe.directions %>
+  <strong>Directions: </strong><%= @recipe.directions %>
 </p>
 
 

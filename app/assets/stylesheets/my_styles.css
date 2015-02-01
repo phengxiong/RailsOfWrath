@@ -13,6 +13,9 @@ body {
 .center_page{
     text-align: center;
 }
+.image-show{
+    max-height: 300px;
+}
 .center{
     margin-left: auto;
     margin-right: auto;
