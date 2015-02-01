@@ -12,8 +12,28 @@ Recipe.destroy_all
 
 ingredients = ["mushrooms", "olives", "cheese"]
 
+
+
 5.times do
-  recipe = Recipe.create(user_id: rand(0..100),
+
+  id = ""
+  found = true
+  while found  #gets a real user_id for recipe | only to be used for testing
+    random_num = rand(0..10)
+    begin
+      rescue Exception => e
+      id = User.find(random_num)
+    end
+
+    if id != ""
+      puts id.inspect
+      found = false
+    end
+
+  end
+
+
+  recipe = Recipe.create( user_id: id,
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
                          directions: Lorem.sentences(sentence_count=3).join(","),

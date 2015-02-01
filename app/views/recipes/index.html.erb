@@ -23,7 +23,8 @@
   <tbody>
   <% @recipes.each do |recipe| %>
       <tr>
-        <td><%= recipe.user_id %></td>
+        <%= username = User.find(recipe.id) %>
+        <td><%= username%></td>
         <td><%= recipe.title %></td>
         <td><%= recipe.serving_size %></td>
         <td><%= recipe.directions %></td>
