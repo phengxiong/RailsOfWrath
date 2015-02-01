@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+<h2>Original Post</h2>
+<div class="table table-striped">
+
+<p>
+  <strong>Author:</strong>
+  <%= @forum.author %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @forum.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @forum.content %>
+</p>
+
+<p>
+  <strong>Published date:</strong>
+  <%= @forum.published_date %>
+</p>
+
+</div>
+
+<h2>Comments</h2>
+
+
+<% @forum.comments.each do |comment|%>
+    <hr>
+    <p>
+      <strong>Author: </strong>
+      <%= comment.author%>
+    </p>
+    <p>
+      <strong>Answer: </strong>
+      <%= comment.content%>
+    </p>
+    <p>
+      <strong>Date published: </strong>
+      <%=comment.date_published%>
+    </p>
+<% end%>
+
+
+
+
+<h2>Add Comment</h2>
+
+<%= form_for([@forum, @forum.comments.build]) do |f|%>
+
+
+      <div class="field">
+        <%= f.label :author %><br>
+        <%= f.text_field :author %>
+      </div>
+      <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content %>
+      </div>
+      <div class="field">
+        <%= f.label :date_published %><br>
+        <%= f.datetime_select :date_published %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :forum_id %><br>
+
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
+  <br>
+
+<%= link_to 'Edit', edit_forum_path(@forum) %> |
+<%= link_to 'Back', forums_path %>
+
+</div>

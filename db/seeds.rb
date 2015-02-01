@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+Forum.destroy_all
 include Faker
 
 Recipe.destroy_all
@@ -49,4 +49,27 @@ Product.destroy_all
 
   )
   puts product.inspect
+
+
+end
+5.times do
+  forum = Forum.create(title: Name.title,
+                           author: Name.name,
+                           content: Lorem.paragraphs(5).join(" ").html_safe,
+                           published_date: Time.now,
+
+
+  )
+  forum.save
+  if( ! forum.nil? )
+    3.times do
+      forum.comments.create( author: Name.name,
+                                 content: Lorem.paragraphs(3).join(" ").html_safe,
+                                 date_published: Time.now,
+      )
+    end
+    end
+  puts forum.inspect
+
+
 end

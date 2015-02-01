@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+
+  resources :forums do
+    resources :comments
+  end
+
   resources :products, :path => "store/products"
 
   resources :recipes
@@ -7,7 +13,7 @@ Rails.application.routes.draw do
   root 'page#Home'
 
   get '/recipes', to: 'recipes#index'
-  get '/forum', to: 'page#forum', as: 'forum'
+  get '/forum', to: 'forums#index'
 
 
   resources :logins
