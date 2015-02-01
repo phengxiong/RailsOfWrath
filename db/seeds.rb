@@ -10,34 +10,17 @@ include Faker
 
 Recipe.destroy_all
 
-ingredients = ["mushrooms", "olives", "cheese"]
+ingredients = ["Mushrooms", "Olives", "Cheese", "Bacon"]
 
+rand_food = ["100", "150", "200", "250", "300","350", "400", "450"]
 
+20.times do
 
-5.times do
-
-  id = ""
-  found = true
-  while found  #gets a real user_id for recipe | only to be used for testing
-    random_num = rand(0..10)
-    begin
-      rescue Exception => e
-      id = User.find(random_num)
-    end
-
-    if id != ""
-      puts id.inspect
-      found = false
-    end
-
-  end
-
-
-  recipe = Recipe.create( user_id: id,
+  recipe = Recipe.create( user_id: User.offset(rand(User.count)).first.id, #gets an actual user_id
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
                          directions: Lorem.sentences(sentence_count=3).join(","),
-                         picture: Avatar.image(nil, "50x50"),
+                         picture: "http://baconmockup.com/"+ rand_food[rand(2..7)]  +"/"+ rand_food[rand(2..7)] + "",
                          ingredients: ingredients[rand(0..2)],
                          category: Company.suffix,
                          cook_time: Commerce.price.round(0),

@@ -1,8 +1,46 @@
-<h1>Recipes</h1>
 
-<% if user_signed_in? %>
-    <%= link_to 'Post New Recipe', new_recipe_path, class: "btn  btn-success" %>
-<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Recipes
+
+
+      <% if user_signed_in? %>
+          <%= link_to 'Post New Recipe', new_recipe_path, class: "btn  btn-success" %>
+      <% end %>
+    </h1>
+    </div>
+  </div>
+
+  <% @count = 0 %>
+
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+        <div class="col-md-2">
+          <%= image_tag recipe.picture, class: "img-responsive image img-rounded" %>
+          <h3 class="text-center"><%= recipe.title %></h3>
+        </div>
+
+        <% @count += 1 %>
+
+        <% if @count == 6 %>
+            </div>
+            <div class="row">
+            <% @count = 0 %>
+        <% end %>
+
+
+
+
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
 
 <table class="table table-striped">
   <thead>
@@ -23,12 +61,12 @@
   <tbody>
   <% @recipes.each do |recipe| %>
       <tr>
-        <%= username = User.find(recipe.id) %>
-        <td><%= username%></td>
+        <% username = User.find(recipe.user_id).username %>
+        <td><%= username %></td>
         <td><%= recipe.title %></td>
         <td><%= recipe.serving_size %></td>
         <td><%= recipe.directions %></td>
-        <td><%= image_tag recipe.picture %></td>
+        <td><%= image_tag recipe.picture, class: "img-responsive" %></td>
         <td><%= recipe.ingredients %></td>
         <td><%= recipe.category %></td>
         <td><%= recipe.cook_time %></td>

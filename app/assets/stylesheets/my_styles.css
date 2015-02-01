@@ -6,6 +6,10 @@ body {
     /* can override coloring for the navbar */
 
 }
+.image{
+    width: 200px;
+    height: 200px;
+}
 
 #foot {
     padding-top: 75px;
