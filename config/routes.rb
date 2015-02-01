@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+
+  resources :recipes do
+    get 'page/:page', :action => :index, :on => :collection
+  end
+
   resources :products, :path => "store/products"
 
-  resources :recipes
 
   root 'page#Home'
 
