@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150202002927) do
-=======
-ActiveRecord::Schema.define(version: 20150131224553) do
 
   create_table "comments", force: true do |t|
     t.string   "author"
@@ -36,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150131224553) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
->>>>>>> origin/master
 
   create_table "products", force: true do |t|
     t.string   "name"
