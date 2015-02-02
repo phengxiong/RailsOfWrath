@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
   resources :recipe_comments
 
   resources :recipes do
@@ -84,9 +83,8 @@ Rails.application.routes.draw do
     #     # (app/controllers/admin/products_controller.rb)
     #     resources :products
     #   end
-  end
+end
 
-=======
 	resources :products do
 		resources :reviews
 		get 'page/:page', :action => :index, :on => :collection
@@ -159,5 +157,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
->>>>>>> origin/Patricks_branch
+
