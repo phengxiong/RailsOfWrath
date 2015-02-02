@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   end
 
+  resources :products do
+    resources :reviews
+    get 'page/:page', :action => :index, :on => :collection
+  end
 
   resources :forums do
     resources :comments
