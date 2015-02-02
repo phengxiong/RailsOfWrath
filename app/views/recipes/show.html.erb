@@ -1,49 +1,101 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @recipe.user_id %>
-</p>
-
-<p>
-  <strong>Title:</strong>
+<h2 class="text-center">
   <%= @recipe.title %>
+</h2>
+<% @recipes.each do |recipe| %>
+    <% @username = User.find(recipe.user_id).username %>
+<% end %>
+
+<p class="text-center">
+  <strong>Recipe by: </strong><%= @username %>
+</p>
+<p class="text-center">
+  <strong>Prepare time: </strong><%= @recipe.prepare_time %> minutes
+  <strong>Cook time:</strong><%= @recipe.cook_time %> minutes
+</p>
+
+<p class="text-center">
+  <strong>Category: </strong><%= @recipe.category %>
+</p>
+<p class="text-center">
+  <strong>Serving size: </strong><%= @recipe.serving_size %>
+</p>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= image_tag @recipe.picture, class: "img-responsive img-rounded center image-show" %>
+  </div>
+</div>
+
+<p>
+  <strong>Ingredients: </strong><%= @recipe.ingredients %>
 </p>
 
 <p>
-  <strong>Serving size:</strong>
-  <%= @recipe.serving_size %>
+  <strong>Directions: </strong><%= @recipe.directions %>
 </p>
 
-<p>
-  <strong>Directions:</strong>
-  <%= @recipe.directions %>
-</p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @recipe.picture %>
-</p>
+<% if user_signed_in? %>
 
-<p>
-  <strong>Ingredients:</strong>
-  <%= @recipe.ingredients %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @recipe.category %>
-</p>
-
-<p>
-  <strong>Cook time:</strong>
-  <%= @recipe.cook_time %>
-</p>
-
-<p>
-  <strong>Prepare time:</strong>
-  <%= @recipe.prepare_time %>
-</p>
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Edit', edit_recipe_path(@recipe) %><% end %>
 <%= link_to 'Back', recipes_path %>
+
+
+<!-- comments -->
+<h3>Comments</h3>
+<table class="table table-striped">
+<% @recipe.recipe_comments.each do |recipe| %>
+      <tr>
+        <td>
+    <% if recipe.rating > 1 %>
+        <% rating = recipe.rating / 2 %>
+    <% else %>
+        <% rating = 1 %>
+    <% end %>
+
+      <div class="col-md-2">
+        <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
+        <h4><%= recipe.author %></h4>
+        <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
+      </div>
+      <div class="col-md-10">
+        <%= recipe.opinion %>
+      </div>
+        </td>
+      </tr>
+<% end %>
+</table>
+
+
+<!--  Comment form -->
+<div class="col-md-4">
+<h3>Leave a comment</h3>
+
+<%= form_for([@recipe, @recipe.recipe_comments.build]) do |f| %>
+
+    <div class="field form-group">
+      <%= f.label :author %>
+      <%= f.text_field :author, class: "form-control" %>
+    </div>
+
+
+    <div class="field form-group">
+      <%= f.label :opinion %>
+      <%= f.text_area :opinion, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :rating %>
+      <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
+    </div>
+    <%= f.hidden_field :recipe_id %>
+    <div class="actions form-group">
+      <br>
+      <%= f.submit 'Add Comment', :class => 'btn btn-success'%>
+    </div>
+
+<% end %>
+
+</div>

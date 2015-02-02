@@ -3,12 +3,15 @@ class RecipesController < ApplicationController
 
   respond_to :html
 
+
+
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.page params[:page]
     respond_with(@recipes)
   end
 
   def show
+    @recipes = Recipe.all.page params[:page]
     respond_with(@recipe)
   end
 

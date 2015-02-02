@@ -6,7 +6,23 @@ body {
     /* can override coloring for the navbar */
 
 }
-
+.image{
+    width: 200px;
+    height: 200px;
+}
+.center_page{
+    text-align: center;
+}
+.image-show{
+    max-height: 300px;
+}
+.star{
+    max-width: 20px;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
 #foot {
     padding-top: 75px;
 }

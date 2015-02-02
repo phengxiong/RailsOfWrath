@@ -1,46 +1,100 @@
-<h1>Recipes</h1>
+<% if !user_signed_in? %>
 
-<% if user_signed_in? %>
-    <%= link_to 'Post New Recipe', new_recipe_path, class: "btn  btn-success" %>
-<% end %>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th>Serving size</th>
-    <th>Directions</th>
-    <th>Picture</th>
-    <th>Ingredients</th>
-    <th>Category</th>
-    <th>Cook time</th>
-    <th>Prepare time</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Recipes</h1>
 
-  <tbody>
-  <% @recipes.each do |recipe| %>
+
+        <div class="center_page">
+          <%= paginate @recipes %>
+        </div>
+
+      </div>
+    </div>
+
+    <% @count = 0 %>
+
+    <div class="row">
+
+      <% @recipes.each do |recipe| %>
+          <div class="col-md-2">
+            <%= link_to 'Show', recipe %>
+            <%= image_tag recipe.picture, class: "img-responsive image img-rounded" %>
+            <h3 class="text-center"><%= recipe.title %></h3>
+          </div>
+
+          <% @count += 1 %>
+
+          <% if @count == 6 %>
+              </div>
+              <div class="row">
+                <% @count = 0 %>
+          <% end %>
+
+
+      <% end %>
+      </div>
+
+
+
+<% else %>
+
+    <div class="col-md-12">
+      <h1>Manage Recipes</h1>
+      <% if user_signed_in? %>
+          <%= link_to 'Post New Recipe', new_recipe_path, class: "btn  btn-success navbar-right" %>
+      <% end %>
+      <div class="center_page">
+        <%= paginate @recipes %>
+      </div>
+    </div>
+
+
+
+    <table class="table table-striped">
+      <thead>
       <tr>
-        <td><%= recipe.user_id %></td>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.serving_size %></td>
-        <td><%= recipe.directions %></td>
-        <td><%= image_tag recipe.picture %></td>
-        <td><%= recipe.ingredients %></td>
-        <td><%= recipe.category %></td>
-        <td><%= recipe.cook_time %></td>
-        <td><%= recipe.prepare_time %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <th>User</th>
+        <th>Title</th>
+        <th>Serving size</th>
+        <th>Directions</th>
+        <th>Picture</th>
+        <th>Ingredients</th>
+        <th>Category</th>
+        <th>Cook time</th>
+        <th>Prepare time</th>
+        <th colspan="3"></th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @recipes.each do |recipe| %>
+          <tr>
+            <% username = User.find(recipe.user_id).username %>
+            <td><%= username %></td>
+            <td><%= recipe.title %></td>
+            <td><%= recipe.serving_size %></td>
+            <td><%= recipe.directions %></td>
+            <td><%= image_tag recipe.picture, class: "img-responsive" %></td>
+            <td><%= recipe.ingredients %></td>
+            <td><%= recipe.category %></td>
+            <td><%= recipe.cook_time %></td>
+            <td><%= recipe.prepare_time %></td>
+            <td><%= link_to 'Show', recipe %></td>
+            <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+            <td><%= link_to 'Destroy', recipe, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
 
 
+    <div class="col-md-12">
+      <div class="center_page">
+        <%= paginate @recipes %>
+      </div>
+    </div>
+
+<% end %>
