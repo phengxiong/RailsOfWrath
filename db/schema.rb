@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 20150202002927) do
     t.datetime "updated_at"
   end
 
+  create_table "reviews", force: true do |t|
+    t.string   "author"
+    t.text     "comment"
+    t.integer  "rating"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
