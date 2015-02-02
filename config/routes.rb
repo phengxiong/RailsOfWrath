@@ -76,11 +76,13 @@ end
 
   resources :recipe_comments
 
+
   resources :recipes do
     resources :recipe_comments
     get 'page/:page', :action => :index, :on => :collection
 
   end
+
 
   resources :forums do
     resources :comments
