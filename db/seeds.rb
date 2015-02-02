@@ -34,8 +34,9 @@ rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550"
  if !recipe.nil?
    (rand(0..5)).times do
      recipe.recipe_comments.create(  author: Name.name,
-                                     opinion: Company.catch_phrase,
-                                     rating: rand(1..5))
+                                     opinion: Lorem.paragraphs(5).join(" "),
+                                     rating: rand(1..5),
+                                     image: Avatar.image(nil, "200x200"))
    end
  end
 end

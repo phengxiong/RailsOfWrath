@@ -16,6 +16,9 @@ body {
 .image-show{
     max-height: 300px;
 }
+.star{
+    max-width: 20px;
+}
 .center{
     margin-left: auto;
     margin-right: auto;

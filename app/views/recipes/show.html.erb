@@ -48,20 +48,30 @@
 
 
 <!-- comments -->
+<h3>Comments</h3>
+<table class="table table-striped">
 <% @recipe.recipe_comments.each do |recipe| %>
+      <tr>
+        <td>
     <% if recipe.rating > 1 %>
         <% rating = recipe.rating / 2 %>
     <% else %>
         <% rating = 1 %>
     <% end %>
-    <div class="sixteen columns">
-      <div class="three columns">Author: <%= recipe.author %></div>
-      <div class="six columns">Comment: <%= recipe.opinion %></div>
-      <div class="two columns">Avatar: <%=  image_tag recipe.picture %></div>
-      <div class="three columns">Rating: <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %> </div>
-      <hr>
-    </div>
+
+      <div class="col-md-2">
+        <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
+        <h4><%= recipe.author %></h4>
+        <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
+      </div>
+      <div class="col-md-10">
+        <%= recipe.opinion %>
+      </div>
+        </td>
+      </tr>
 <% end %>
+</table>
+
 
 <!--  Comment form -->
 <div class="col-md-4">
