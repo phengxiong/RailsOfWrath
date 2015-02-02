@@ -1,26 +1,18 @@
 Rails.application.routes.draw do
 
-
-<<<<<<< HEAD
-
-
-=======
   resources :recipe_comments
->>>>>>> origin/master
+
 
   resources :recipes do
     resources :recipe_comments
     get 'page/:page', :action => :index, :on => :collection
-<<<<<<< HEAD
+
   end
 
 
   resources :forums do
     resources :comments
   end
-=======
-
->>>>>>> origin/master
 
     resources :forums do
       resources :comments
@@ -94,4 +86,4 @@ Rails.application.routes.draw do
     #     resources :products
     #   end
   end
-end
+
