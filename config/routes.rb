@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	resources :products do
 		resources :reviews
 		get 'page/:page', :action => :index, :on => :collection
@@ -76,8 +73,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
-=======
->>>>>>> e002f4d55d9c8812d191a7de21e6a4968f4f675a
+
   resources :recipe_comments
 
   resources :recipes do
@@ -161,7 +157,7 @@ end
     #     # (app/controllers/admin/products_controller.rb)
     #     resources :products
     #   end
-end
+
 
 	resources :products do
 		resources :reviews
@@ -235,8 +231,3 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
->>>>>>> e002f4d55d9c8812d191a7de21e6a4968f4f675a
