@@ -1,0 +1,2 @@
+module RecipeCommentHelper
+end
