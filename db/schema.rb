@@ -11,6 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20150201195802) do
+=======
+>>>>>>> e002f4d55d9c8812d191a7de21e6a4968f4f675a
 ActiveRecord::Schema.define(version: 20150202002927) do
 
   create_table "comments", force: true do |t|
@@ -33,6 +39,10 @@ ActiveRecord::Schema.define(version: 20150202002927) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
+>>>>>>> e002f4d55d9c8812d191a7de21e6a4968f4f675a
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -70,6 +80,17 @@ ActiveRecord::Schema.define(version: 20150202002927) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reviews", force: true do |t|
+    t.string   "author"
+    t.text     "comment"
+    t.integer  "rating"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
