@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 	resources :products do
 		resources :reviews
 		get 'page/:page', :action => :index, :on => :collection
-	end
+  end
+
+
+
 
   resources :products, :path => 'store/products'
 
@@ -14,10 +17,15 @@ Rails.application.routes.draw do
   get '/recipes', to: 'recipes#index'
   get '/forum', to: 'page#forum', as: 'forum'
 
-
   resources :logins
 
   devise_for :users
+
+  resources :products, :path => 'store/products'
+  
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -74,29 +82,15 @@ Rails.application.routes.draw do
   #   end
 end
 
-<<<<<<< HEAD
-=======
-  resources :recipe_comments
-
->>>>>>> origin/master
 
   resources :recipes do
     resources :recipe_comments
     get 'page/:page', :action => :index, :on => :collection
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
   end
 
 
-  resources :forums do
-    resources :comments
-  end
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 
     resources :forums do
       resources :comments
@@ -169,30 +163,10 @@ end
     #     # (app/controllers/admin/products_controller.rb)
     #     resources :products
     #   end
-<<<<<<< HEAD
+
   end
 
-=======
 
-
-	resources :products do
-		resources :reviews
-		get 'page/:page', :action => :index, :on => :collection
-	end
-
-  resources :products, :path => 'store/products'
-
-  resources :recipes
-
-  root 'page#Home'
-
-  get '/recipes', to: 'recipes#index'
-  get '/forum', to: 'page#forum', as: 'forum'
-
-
-  resources :logins
-
-  devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -247,4 +221,3 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
->>>>>>> origin/master
