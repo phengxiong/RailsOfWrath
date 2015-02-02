@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 
 
+<<<<<<< HEAD
   resources :recipe_comments
 
   resources :recipes do
     resources :recipe_comments
     get 'page/:page', :action => :index, :on => :collection
+=======
+
+  resources :forums do
+    resources :comments
+>>>>>>> origin/master
   end
 
   resources :products, :path => "store/products"
@@ -14,7 +20,7 @@ Rails.application.routes.draw do
   root 'page#Home'
 
   get '/recipes', to: 'recipes#index'
-  get '/forum', to: 'page#forum', as: 'forum'
+  get '/forum', to: 'forums#index'
 
 
   resources :logins
