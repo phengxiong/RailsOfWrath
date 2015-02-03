@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsOfWrath</title>
+  <title>Repeat Eats</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,19 +10,29 @@
 
 <%= render 'shared/header' %>
 
-<div id="message">
-  <p class="notice"><%= notice %></p>
-</div>
+<% if notice%>
 
-<div id="error">
-  <p class="alert"><%= alert %></p>
-</div>
+    <div id="message">
+      <p class="notice alert alert-info"><%= notice %></p>
+    </div>
+
+
+<% end %>
+
+<% if alert%>
+
+    <div id="error">
+      <p class="alert alert-danger"><%= alert %></p>
+    </div>
+
+<% end %>
 
 <div class="container">
   <%= yield %>
+  <%= render 'shared/footer' %>
 </div>
 
-<%= render 'shared/footer' %>
+
 
 
 </body>

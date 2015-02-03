@@ -11,13 +11,14 @@ include Faker
 Recipe.destroy_all
 
 ingredients = ["Mushrooms", "Olives", "Cheese", "Bacon"]
-
-
 rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550", "600", "650", "700", "750", "800", "850", "900"]
 
 50.times do
 
-  recipe = Recipe.create( user_id: User.offset(rand(User.count)).first.id, #gets an actual user_id
+  recipe = Recipe.create(
+
+                         #user_id: User.offset(rand(User.count)).first.id, #gets an actual user_id
+                         user_id: rand(1..1000),
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
 
