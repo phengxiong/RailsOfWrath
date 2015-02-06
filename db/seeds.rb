@@ -13,16 +13,16 @@ Recipe.destroy_all
 ingredients = ["Mushrooms", "Olives", "Cheese", "Bacon"]
 
 
-rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550", "600", "650", "700", "750", "800", "850", "900"]
+rand_food = ["100", "150", "200", "250", "300", "350", "400", "450", "500", "550", "600", "650", "700", "750", "800", "850", "900"]
 
 50.times do
 
-  recipe = Recipe.create( user_id: User.offset(rand(User.count)).first.id, #gets an actual user_id
+  recipe = Recipe.create(user_id: User.offset(rand(User.count)).first.id, #gets an actual user_id
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
 
                          directions: Lorem.sentences(sentence_count=3).join(","),
-                         picture: "http://baconmockup.com/"+ rand_food[rand(2..16)]  +"/"+ rand_food[rand(2..16)] + "",
+                         picture: "http://baconmockup.com/"+ rand_food[rand(2..16)] +"/"+ rand_food[rand(2..16)] + "",
 
                          directions: Lorem.sentences(sentence_count=3).join(','),
 
@@ -30,7 +30,7 @@ rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550"
                          picture: Avatar.image(nil, '50x50'),
 
                          directions: Lorem.sentences(sentence_count=3).join(","),
-                         picture: "http://baconmockup.com/"+ rand_food[rand(2..16)]  +"/"+ rand_food[rand(2..16)] + "",
+                         picture: "http://baconmockup.com/"+ rand_food[rand(2..16)] +"/"+ rand_food[rand(2..16)] + "",
 
                          ingredients: ingredients[rand(0..2)],
                          category: Company.suffix,
@@ -41,15 +41,14 @@ rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550"
   puts recipe.inspect
 
 
-
- if !recipe.nil?
-   (rand(0..5)).times do
-     recipe.recipe_comments.create(  author: Name.name,
-                                     opinion: Lorem.paragraphs(5).join(" "),
-                                     rating: rand(1..5),
-                                     image: Avatar.image(nil, "200x200"))
-   end
- end
+  if !recipe.nil?
+    (rand(0..5)).times do
+      recipe.recipe_comments.create(author: Name.name,
+                                    opinion: Lorem.paragraphs(5).join(" "),
+                                    rating: rand(1..5),
+                                    image: Avatar.image(nil, "200x200"))
+    end
+  end
 end
 
 Product.destroy_all
@@ -69,25 +68,22 @@ Product.destroy_all
 
 
 end
+
 5.times do
   forum = Forum.create(title: Name.title,
-                           author: Name.name,
-                           content: Lorem.paragraphs(5).join(" ").html_safe,
-                           published_date: Time.now,
-
+                       author: Name.name,
+                       content: Lorem.paragraphs(5).join(" ").html_safe,
+                       published_date: Time.now,
 
   )
   forum.save
-  if( ! forum.nil? )
+  if (!forum.nil?)
     3.times do
-      forum.comments.create( author: Name.name,
-                                 content: Lorem.paragraphs(3).join(" ").html_safe,
-                                 date_published: Time.now,
+      forum.comments.create(author: Name.name,
+                            content: Lorem.paragraphs(3).join(" ").html_safe,
+                            date_published: Time.now,
       )
     end
-    end
+  end
   puts forum.inspect
-
-
-
 end
