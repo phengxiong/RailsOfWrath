@@ -23,6 +23,10 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+.image-index{
+    height: 100px;
+    width: 100px
+}
 #foot {
     padding-top: 75px;
 }
