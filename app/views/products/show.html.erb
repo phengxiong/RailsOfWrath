@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div class="fb-like" data-href="http://localhost:3000/products/37" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
 <figure>
   <%= image_tag @product.image %>
 </figure>
@@ -40,19 +42,21 @@
 <div id="comment">
   <% @product.reviews.each do |review| %>
       <p>
-        <%= current_user.username %>
+        <%= review.author %>
       </p>
+
       <p>
         <%= review.comment %>
       </p>
-      <%= (image_tag( 'star.jpg', height: '15', width: '15') * review.rating).html_safe %> <br />
-      <% if is_admin? %>
-          <%= link_to 'Remove', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= (image_tag('star.jpg', height: '15', width: '15') * review.rating).html_safe %> <br/>
+          <% if is_admin? %>
+          <%= link_to 'Remove', product_review_path(@product, review), method: :delete, data: {confirm: 'Are you sure?'} %>
       <% end %>
       <hr>
   <% end %>
   <%= form_for([@product, @product.reviews.build]) do |f| %>
       <%= f.hidden_field :product_id %>
+      <%= f.hidden_field :author, :value => current_user.username %>
       <div class="field">
         <%= f.label :comment %><br>
         <%= f.text_area :comment %>
