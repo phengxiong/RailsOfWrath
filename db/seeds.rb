@@ -20,7 +20,7 @@ rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550"
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
                          directions: Lorem.sentences(sentence_count=3).join(","),
-                         picture: "http://baconmockup.com/"+ rand_food[rand(2..16)]  +"/"+ rand_food[rand(2..16)] + "",
+                         picture: "http://baconmockup.com/400/400",
                          ingredients: ingredients[rand(0..2)],
                          category: Company.suffix,
                          cook_time: Commerce.price.round(0),
