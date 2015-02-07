@@ -3,9 +3,15 @@ class RecipesController < ApplicationController
 
   respond_to :html
 
-
+  def find_avg_rating (rating, count)
+    return rating / count
+  end
 
   def index
+
+    ids = Recipe.pluck(:id) #return an array of ids where rating was 5
+    @random_five = Recipe.find(ids).first(5)
+
     @recipes = Recipe.all.page params[:page]
     respond_with(@recipes)
   end

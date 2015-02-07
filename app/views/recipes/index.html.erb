@@ -1,6 +1,8 @@
 <% if !user_signed_in? %>
 
+    <% @recipes.each do |recipe| %>
 
+    <% end %>
 
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">
@@ -65,7 +67,6 @@
           <tr>
             <% username = User.find(recipe.user_id).username %>
             <td><%= username %></td>
-            <%= recipe.recipe_comment %>
             <td><%= recipe.title %></td>
             <td><%= recipe.serving_size %></td>
             <td><%= recipe.directions %></td>
@@ -91,3 +92,11 @@
     </div>
 
 <% end %>
+
+<div class="col-md-12">
+  <div class="center_page">
+
+
+
+  </div>
+</div>
