@@ -65,6 +65,7 @@
           <tr>
             <% username = User.find(recipe.user_id).username %>
             <td><%= username %></td>
+            <%= recipe.recipe_comment %>
             <td><%= recipe.title %></td>
             <td><%= recipe.serving_size %></td>
             <td><%= recipe.directions %></td>

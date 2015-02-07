@@ -58,6 +58,7 @@
       <div class="col-md-2">
         <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
         <h4><%= recipe.author %></h4>
+
         <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
       </div>
       <div class="col-md-10">
