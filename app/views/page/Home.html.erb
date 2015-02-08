@@ -39,3 +39,53 @@
     </div>
   </div>
 </div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <h3>Staff Favorites</h3>
+    </div>
+</div>
+
+
+<% @ids = Recipe.pluck(:id) #return an array of ids where rating was 5 %>
+<% @random_five = Recipe.find(@ids).first(6) %>
+
+<div class="row">
+  <% @count = 0 %>
+  <% @random_five.each do |recipe| %>
+
+      <div class="col-md-4">
+
+
+        <div>
+          <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class=>"img-responsive img-hover my-image img-rounded"), recipe %>
+        </div>
+
+
+        <h4 class="text-primary pic-overlay text-center strong"><%= recipe.title %></h4>
+
+      </div>
+
+      <% @count += 1 %>
+      <% if @count > 2 %>
+          </div> <!-- close row -->
+          <div class="row"> <!-- open row -->
+          <% @count = 0 %>
+      <% end %>
+
+
+
+  <% end %>
+  </div>
+
+
+  <!-- Controls -->
+
+
+
+
+
+<!-- BACK UP -->
+
+
