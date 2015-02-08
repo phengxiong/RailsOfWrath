@@ -17,7 +17,7 @@
       <% @recipes.each do |recipe| %>
           <div class="row">
             <div class="col-md-7">
-              <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class=>"img-responsive img-hover"), recipe %>
+              <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class=>"img-responsive img-hover my-image"), recipe %>
             </div>
             <div class="col-md-5">
               <h3><%= recipe.title %></h3>

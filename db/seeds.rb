@@ -12,7 +12,7 @@ Recipe.destroy_all
 
 ingredients = ["Mushrooms", "Olives", "Cheese", "Bacon"]
 
-rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550", "600", "650", "700", "750", "800", "850", "900"]
+rand_food = ["450", "500", "550", "600", "650", "700", "750", "800", "850", "900"]
 
 50.times do
 
@@ -20,7 +20,7 @@ rand_food = ["100", "150", "200", "250", "300","350", "400", "450", "500", "550"
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
                          directions: Lorem.sentences(sentence_count=3).join(","),
-                         picture: "http://baconmockup.com/400/400",
+                         picture: "http://lorempixel.com/900/600/food/?#{rand(0.0..1.0)}",
                          ingredients: ingredients[rand(0..2)],
                          category: Company.suffix,
                          cook_time: Commerce.price.round(0),
