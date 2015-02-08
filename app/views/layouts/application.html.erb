@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsOfWrath</title>
+  <title>Repeat Eats</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!--script for facebook buttons to work-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -18,20 +28,32 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <%= render 'shared/header' %>
+<!-- the FACEBOOK BUTTONS here .... need to change the website  -->
+<div class="fb-like" data-href="http://radmation.com" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
-<div id="message">
-  <p class="notice"><%= notice %></p>
-</div>
+<% if notice%>
 
-<div id="error">
-  <p class="alert"><%= alert %></p>
-</div>
+    <div id="message">
+      <p class="notice alert alert-info"><%= notice %></p>
+    </div>
+
+
+<% end %>
+
+<% if alert%>
+
+    <div id="error">
+      <p class="alert alert-danger"><%= alert %></p>
+    </div>
+
+<% end %>
 
 <div class="container">
   <%= yield %>
+  <%= render 'shared/footer' %>
 </div>
 
-<%= render 'shared/footer' %>
+
 
 
 </body>

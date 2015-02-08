@@ -1,0 +1,72 @@
+
+header.carousel {
+    height: 25%;
+}
+
+.carousel-caption {
+	text-shadow: 2px 2px 3px #000;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 8px;
+	padding-top: 0;
+}
+
+header.carousel {
+	min-height: 150px;
+}
+
+.pagination a, .pagination span.current, .pagination span.gap {
+    float: left;
+    padding: 0 14px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+}
+
+.pagination {
+    border-left: 1px solid #ddd;
+    margin: 0;
+}
+.first{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.prev {
+    padding : 0;
+    float: none;
+    border: none;
+}
+.page{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.next{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.last {
+    padding: 0;
+    float: none;
+    border: none;
+}
+.my-image{
+    padding: 0;
+    margin: 0;
+}
+.pic-overlay{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 30px;
+    margin-left: 30px;
+    position: relative;
+    top: -25px;
+    background-color: #000;
+    opacity: .85;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
