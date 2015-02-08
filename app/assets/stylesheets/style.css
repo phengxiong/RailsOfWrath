@@ -70,3 +70,6 @@ header.carousel {
     -moz-border-radius: 20px;
     border-radius: 20px;
 }
+.star{
+    max-width: 20px;
+}

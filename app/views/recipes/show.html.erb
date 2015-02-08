@@ -3,9 +3,18 @@
 <h2 class="text-center">
   <%= @recipe.title %>
 </h2>
+
 <% @recipes.each do |recipe| %>
     <% @username = User.find(recipe.user_id).username %>
+    <% @recipe_id = recipe.id %>
+
 <% end %>
+<!-- the FACEBOOK BUTTONS here .... need to change the website  -->
+<% @facebook_string = "http://104.236.185.189/recipes/" + @recipe.id.to_s %>
+<!--<h5><%# @facebook_string %></h5>-->
+<div class="fb-like" data-href="/<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
 
 <p class="text-center">
   <strong>Recipe by: </strong><%= @username %>
