@@ -1,0 +1,31 @@
+Host: 104.236.185.189
+User: root
+Pass: railspass
+
+SFTP credentials:
+Host: 104.236.185.189
+User: rails
+Pass: o9VFrhS04j
+
+MySQL database credentials:
+DB: rails
+User: rails
+Pass: Z806UR4vBN
+
+cd /home/rails
+
+rm -rdv *
+
+Send all of the files to the deployment server.
+
+bundle install
+
+RAILS_ENV=production rake db:migrate
+
+RAILS_ENV=production rake db:seed
+
+RAILS_ENV=production rake assets:precompile
+
+chown -R rails:www-data /home/rails
+
+service unicorn restart
