@@ -42,3 +42,13 @@ body {
     color: red;
 }
 */
+
+.show_page {
+    border: 1px solid #000000;
+    border-radius: 15px;
+    background-color: lightyellow;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
