@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209014008) do
+ActiveRecord::Schema.define(version: 20150209024521) do
 
   create_table "comments", force: true do |t|
     t.string   "author"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150209014008) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "shared"
+    t.string   "author"
   end
 
   create_table "reviews", force: true do |t|
