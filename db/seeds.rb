@@ -53,7 +53,7 @@ end
 
 Product.destroy_all
 
-5.times do
+20.times do
   product = Product.create(name: Commerce.product_name.titleize,
                            description: Lorem.paragraphs(5).join(' '),
                            quantity: rand(1..100),
