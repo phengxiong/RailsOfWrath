@@ -3,8 +3,19 @@ class RecipesController < ApplicationController
 
   respond_to :html
 
-  def find_avg_rating (rating, count)
-    return rating / count
+
+  def ajax_sum
+
+
+    id = params["recipe_id"].to_i
+    a = Recipe.find(id).shared += 1
+    a.save
+
+    result = "added shared to table boi!!"
+
+    respond_to do |format|
+      format.json {render :json => {:result => result}}
+      end
   end
 
   def index

@@ -4,4 +4,6 @@ module ApplicationHelper
     return current_user.try(:admin?)
   end
 
+
+
 end
