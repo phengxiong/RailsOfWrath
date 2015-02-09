@@ -1,114 +1,122 @@
 <p id="notice"><%= notice %></p>
-
-<h2 class="text-center">
-  <%= @recipe.title %>
-</h2>
+<%= link_to 'Back', recipes_path, :class => "to_hide" %>
 
 <% @recipes.each do |recipe| %>
     <% @username = User.find(recipe.user_id).username %>
     <% @recipe_id = recipe.id %>
-
 <% end %>
+
 <!-- the FACEBOOK BUTTONS here .... need to change the website  -->
+<<<<<<< HEAD
 <% @facebook_string = "http://104.236.148.61/recipes/" + @recipe.id.to_s %>
 <h5><%= @facebook_string %></h5>
 <div class="fb-like" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+=======
+<% @facebook_string = "/recipes/" + @recipe.id.to_s %>
+<!--<h5><%# @facebook_string %></h5>-->
+<div class="fb-like" data-href="/<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+>>>>>>> d35298520bb6949d6042a2fdcfa8635f8580ee91
 
 
+<div class="col-md-12 text-center show_page">
 
-<p class="text-center">
-  <strong>Recipe by: </strong><%= @username %>
-</p>
-<p class="text-center">
-  <strong>Prepare time: </strong><%= @recipe.prepare_time %> minutes
-  <strong>Cook time:</strong><%= @recipe.cook_time %> minutes
-</p>
+  <figure class="text-center">
+    <%= image_tag @recipe.picture %>
+  </figure>
 
-<p class="text-center">
-  <strong>Category: </strong><%= @recipe.category %>
-</p>
-<p class="text-center">
-  <strong>Serving size: </strong><%= @recipe.serving_size %>
-</p>
+  <h2><%= @recipe.title %></h2>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= image_tag @recipe.picture, class: "img-responsive img-rounded center image-show" %>
-  </div>
+  <p><strong>Recipe by: </strong><%= @username %></p>
+
+  <p>
+    <strong>Prepare time: </strong><%= @recipe.prepare_time %> minutes
+    <strong>Cook time:</strong><%= @recipe.cook_time %> minutes
+  </p>
+
+  <p><strong>Category: </strong><%= @recipe.category %></p>
+
+  <p><strong>Serving size: </strong><%= @recipe.serving_size %></p>
+
+  <p><strong>Ingredients: </strong><%= @recipe.ingredients %></p>
+
+  <p><strong>Directions: </strong><%= @recipe.directions %></p>
+
+  <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_recipe_path(@recipe), :class => 'btn btn-default to_hide' %>
+  <% end %>
+
 </div>
 
-<p>
-  <strong>Ingredients: </strong><%= @recipe.ingredients %>
-</p>
+<div class="comments">
+  <!-- comments -->
+  <table class="table table-striped">
+    <h3>Comments</h3>
 
-<p>
-  <strong>Directions: </strong><%= @recipe.directions %>
-</p>
+    <% @recipe.recipe_comments.each do |recipe| %>
+        <tr>
+          <td>
+            <% if recipe.rating > 1 %>
+                <% rating = recipe.rating / 2 %>
+            <% else %>
+                <% rating = 1 %>
+            <% end %>
 
+            <div class="col-md-2">
+              <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
+              <h4><%= recipe.author %></h4>
 
-<% if user_signed_in? %>
+              <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
+            </div>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %><% end %>
-<%= link_to 'Back', recipes_path %>
+            <div class="col-md-10">
+              <%= recipe.opinion %>
+            </div>
 
-
-<!-- comments -->
-<h3>Comments</h3>
-<table class="table table-striped">
-
-<% @recipe.recipe_comments.each do |recipe| %>
-      <tr>
-        <td>
-    <% if recipe.rating > 1 %>
-        <% rating = recipe.rating / 2 %>
-    <% else %>
-        <% rating = 1 %>
+          </td>
+        </tr>
     <% end %>
 
-      <div class="col-md-2">
-        <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
-        <h4><%= recipe.author %></h4>
-
-        <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
-      </div>
-      <div class="col-md-10">
-        <%= recipe.opinion %>
-      </div>
-        </td>
-      </tr>
-<% end %>
-
-</table>
-
-
-<!--  Comment form -->
-<div class="col-md-4">
-
-<h3>Leave a comment</h3>
-
-<%= form_for([@recipe, @recipe.recipe_comments.build]) do |f| %>
-
-    <div class="field form-group">
-      <%= f.label :author %>
-      <%= f.text_field :author, class: "form-control" %>
-    </div>
-
-
-    <div class="field form-group">
-      <%= f.label :opinion %>
-      <%= f.text_area :opinion, class: "form-control" %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :rating %>
-      <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
-    </div>
-    <%= f.hidden_field :recipe_id %>
-    <div class="actions form-group">
-      <br>
-      <%= f.submit 'Add Comment', :class => 'btn btn-success'%>
-    </div>
-
-<% end %>
-
+  </table>
 </div>
+
+<div class="comments">
+
+  <% if !user_signed_in? %>
+      <%= link_to 'Login to post a comment', new_user_session_path %>
+  <% end %>
+
+  <!--  Comment form -->
+  <% if user_signed_in? %>
+
+      <div class="col-md-4">
+
+        <h3>Leave a comment</h3>
+
+        <%= form_for([@recipe, @recipe.recipe_comments.build]) do |f| %>
+
+            <div class="field form-group">
+              <%= f.hidden_field :author, :value => current_user.username %>
+            </div>
+
+            <div class="field form-group">
+              <%= f.label :opinion %>
+              <%= f.text_area :opinion, class: "form-control" %>
+            </div>
+
+            <div class="field form-group">
+              <%= f.label :rating %>
+              <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
+            </div>
+            <%= f.hidden_field :recipe_id %>
+            <div class="actions form-group">
+              <br>
+              <%= f.submit 'Add Comment', :class => 'btn btn-success' %>
+            </div>
+
+        <% end %>
+
+      </div>
+  <% end %>
+</div>
+
+<div class="page_break"></div>
