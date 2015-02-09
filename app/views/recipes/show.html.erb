@@ -6,10 +6,10 @@
     <% @recipe_id = recipe.id %>
 <% end %>
 
-<!-- the FACEBOOK BUTTONS here .... need to change the website  -->
-<% @facebook_string = "/recipes/" + @recipe.id.to_s %>
-<!--<h5><%# @facebook_string %></h5>-->
-<div class="fb-like" data-href="/<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+<% @facebook_string = "http://104.236.148.61/recipes/" + @recipe.id.to_s %>
+
+
+<div class="fb-like" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true" id="shared"></div>
 
 
 <div class="col-md-12 text-center show_page">
