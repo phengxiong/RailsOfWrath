@@ -73,3 +73,10 @@ header.carousel {
 .star{
     max-width: 20px;
 }
+
+#humancheck-0, #humancheck-1, #rememberme-0 {
+
+    position: relative;
+    margin-left: 0;
+
+}
