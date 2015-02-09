@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path, :class => "to_hide" %>
 
 <div class="fb-like" data-href="http://localhost:3000/products/37" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
@@ -20,14 +20,13 @@
   <p><strong>Weight: </strong><%= number_with_precision(@product.weight, precision: 2) + " lbs" %></p>
 
   <% if is_admin? %>
-      <%= link_to 'Edit', edit_product_path(@product), :class => 'btn btn-default' %>
+      <%= link_to 'Edit', edit_product_path(@product), :class => 'btn btn-default to_hide' %>
   <% end %>
 
 </div>
 
 
-
-<div id="comment">
+<div class="comments">
   <% @product.reviews.each do |review| %>
       <p><strong><%= review.author %></strong> said:</p>
 

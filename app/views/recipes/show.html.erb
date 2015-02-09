@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', recipes_path%>
+<%= link_to 'Back', recipes_path, :class => "to_hide" %>
 
 <% @recipes.each do |recipe| %>
     <% @username = User.find(recipe.user_id).username %>
@@ -36,78 +36,81 @@
   <p><strong>Directions: </strong><%= @recipe.directions %></p>
 
   <% if user_signed_in? %>
-      <%= link_to 'Edit', edit_recipe_path(@recipe), :class => 'btn btn-default' %>
+      <%= link_to 'Edit', edit_recipe_path(@recipe), :class => 'btn btn-default to_hide' %>
   <% end %>
 
 </div>
 
+<div class="comments">
+  <!-- comments -->
+  <table class="table table-striped">
+    <h3>Comments</h3>
 
+    <% @recipe.recipe_comments.each do |recipe| %>
+        <tr>
+          <td>
+            <% if recipe.rating > 1 %>
+                <% rating = recipe.rating / 2 %>
+            <% else %>
+                <% rating = 1 %>
+            <% end %>
 
+            <div class="col-md-2">
+              <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
+              <h4><%= recipe.author %></h4>
 
-<!-- comments -->
-<h3>Comments</h3>
-<table class="table table-striped">
+              <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
+            </div>
 
-  <% @recipe.recipe_comments.each do |recipe| %>
-      <tr>
-        <td>
-          <% if recipe.rating > 1 %>
-              <% rating = recipe.rating / 2 %>
-          <% else %>
-              <% rating = 1 %>
-          <% end %>
+            <div class="col-md-10">
+              <%= recipe.opinion %>
+            </div>
 
-          <div class="col-md-2">
-            <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
-            <h4><%= recipe.author %></h4>
+          </td>
+        </tr>
+    <% end %>
 
-            <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
-          </div>
+  </table>
+</div>
 
-          <div class="col-md-10">
-            <%= recipe.opinion %>
-          </div>
+<div class="comments">
 
-        </td>
-      </tr>
+  <% if !user_signed_in? %>
+      <%= link_to 'Login to post a comment', new_user_session_path %>
   <% end %>
 
-</table>
+  <!--  Comment form -->
+  <% if user_signed_in? %>
 
+      <div class="col-md-4">
 
-<% if !user_signed_in? %>
-    <%= link_to 'Login to post a comment', new_user_session_path %>
-<% end %>
+        <h3>Leave a comment</h3>
 
-<!--  Comment form -->
-<% if user_signed_in? %>
+        <%= form_for([@recipe, @recipe.recipe_comments.build]) do |f| %>
 
-    <div class="col-md-4">
+            <div class="field form-group">
+              <%= f.hidden_field :author, :value => current_user.username %>
+            </div>
 
-      <h3>Leave a comment</h3>
+            <div class="field form-group">
+              <%= f.label :opinion %>
+              <%= f.text_area :opinion, class: "form-control" %>
+            </div>
 
-      <%= form_for([@recipe, @recipe.recipe_comments.build]) do |f| %>
+            <div class="field form-group">
+              <%= f.label :rating %>
+              <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
+            </div>
+            <%= f.hidden_field :recipe_id %>
+            <div class="actions form-group">
+              <br>
+              <%= f.submit 'Add Comment', :class => 'btn btn-success' %>
+            </div>
 
-          <div class="field form-group">
-            <%= f.hidden_field :author, :value => current_user.username %>
-          </div>
+        <% end %>
 
-          <div class="field form-group">
-            <%= f.label :opinion %>
-            <%= f.text_area :opinion, class: "form-control" %>
-          </div>
+      </div>
+  <% end %>
+</div>
 
-          <div class="field form-group">
-            <%= f.label :rating %>
-            <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
-          </div>
-          <%= f.hidden_field :recipe_id %>
-          <div class="actions form-group">
-            <br>
-            <%= f.submit 'Add Comment', :class => 'btn btn-success' %>
-          </div>
-
-      <% end %>
-
-    </div>
-<% end %>
+<div class="page_break"></div>

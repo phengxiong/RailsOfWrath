@@ -12,26 +12,13 @@ Recipe.destroy_all
 
 ingredients = ["Mushrooms", "Olives", "Cheese", "Bacon"]
 
-
-rand_food = ["100", "150", "200", "250", "300", "350", "400", "450", "500", "550", "600", "650", "700", "750", "800", "850", "900"]
-
 50.times do
 
   recipe = Recipe.create(user_id: User.offset(rand(User.count)).first.id, #gets an actual user_id
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
-
-                         directions: Lorem.sentences(sentence_count=3).join(","),
-                         picture: "http://baconmockup.com/"+ rand_food[rand(2..16)] +"/"+ rand_food[rand(2..16)] + "",
-
-                         directions: Lorem.sentences(sentence_count=3).join(','),
-
-                         directions: Lorem.sentences(sentence_count=3).join(','),
-                         picture: Avatar.image(nil, '50x50'),
-
-                         directions: Lorem.sentences(sentence_count=3).join(","),
-                         picture: "http://baconmockup.com/"+ rand_food[rand(2..16)] +"/"+ rand_food[rand(2..16)] + "",
-
+                         directions: Lorem.paragraphs(5).join(" "),
+                         picture: "http://baconmockup.com/300/300",
                          ingredients: ingredients[rand(0..2)],
                          category: Company.suffix,
                          cook_time: Commerce.price.round(0),
