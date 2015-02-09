@@ -14,7 +14,28 @@
 
 <% @facebook_string = "http://104.236.148.61/recipes/" + @recipe.id.to_s %>
 <h5><%= @facebook_string %></h5>
-<div class="fb-like" data-href="/<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+
+<script>
+
+    $(document).ready(function(){
+        $("#mydiv").click(function(){
+            $(this).css("background-color", "red");
+            $.post('/ajax/sum.json',
+                    {
+                        recipe_id: <%= @recipe.id %>
+                    },
+                    function(data){
+                        var output = data.result;
+                        alert("Added Shared: " + output);
+                    });
+        });
+    });
+</script>
+
+
+
+<div id="mydiv" class="fb-like" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true" id="shared"></div>
 
 
 
@@ -50,7 +71,8 @@
 
 <% if user_signed_in? %>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %><% end %>
+    <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+<% end %>
 <%= link_to 'Back', recipes_path %>
 
 
@@ -58,58 +80,58 @@
 <h3>Comments</h3>
 <table class="table table-striped">
 
-<% @recipe.recipe_comments.each do |recipe| %>
+  <% @recipe.recipe_comments.each do |recipe| %>
       <tr>
         <td>
-    <% if recipe.rating > 1 %>
-        <% rating = recipe.rating / 2 %>
-    <% else %>
-        <% rating = 1 %>
-    <% end %>
+          <% if recipe.rating > 1 %>
+              <% rating = recipe.rating / 2 %>
+          <% else %>
+              <% rating = 1 %>
+          <% end %>
 
-      <div class="col-md-2">
-        <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
-        <h4><%= recipe.author %></h4>
+          <div class="col-md-2">
+            <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
+            <h4><%= recipe.author %></h4>
 
-        <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
-      </div>
-      <div class="col-md-10">
-        <%= recipe.opinion %>
-      </div>
+            <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
+          </div>
+          <div class="col-md-10">
+            <%= recipe.opinion %>
+          </div>
         </td>
       </tr>
-<% end %>
+  <% end %>
 
 </table>
 
 
 <!--  Comment form -->
 <div class="col-md-4">
-<h3>Leave a comment</h3>
+  <h3>Leave a comment</h3>
 
-<%= form_for([@recipe, @recipe.recipe_comments.build]) do |f| %>
+  <%= form_for([@recipe, @recipe.recipe_comments.build]) do |f| %>
 
-    <div class="field form-group">
-      <%= f.label :author %>
-      <%= f.text_field :author, class: "form-control" %>
-    </div>
+      <div class="field form-group">
+        <%= f.label :author %>
+        <%= f.text_field :author, class: "form-control" %>
+      </div>
 
 
-    <div class="field form-group">
-      <%= f.label :opinion %>
-      <%= f.text_area :opinion, class: "form-control" %>
-    </div>
+      <div class="field form-group">
+        <%= f.label :opinion %>
+        <%= f.text_area :opinion, class: "form-control" %>
+      </div>
 
-    <div class="field form-group">
-      <%= f.label :rating %>
-      <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
-    </div>
-    <%= f.hidden_field :recipe_id %>
-    <div class="actions form-group">
-      <br>
-      <%= f.submit 'Add Comment', :class => 'btn btn-success'%>
-    </div>
+      <div class="field form-group">
+        <%= f.label :rating %>
+        <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
+      </div>
+      <%= f.hidden_field :recipe_id %>
+      <div class="actions form-group">
+        <br>
+        <%= f.submit 'Add Comment', :class => 'btn btn-success' %>
+      </div>
 
-<% end %>
+  <% end %>
 
 </div>
