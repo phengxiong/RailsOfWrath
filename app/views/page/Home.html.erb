@@ -11,7 +11,9 @@
         <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.2.0</h4>
       </div>
       <div class="panel-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in
+          alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum
+          quod?</p>
         <a href="#" class="btn btn-default">Learn More</a>
       </div>
     </div>
@@ -22,7 +24,9 @@
         <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
       </div>
       <div class="panel-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in
+          alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum
+          quod?</p>
         <a href="#" class="btn btn-default">Learn More</a>
       </div>
     </div>
@@ -33,7 +37,9 @@
         <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
       </div>
       <div class="panel-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in
+          alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum
+          quod?</p>
         <a href="#" class="btn btn-default">Learn More</a>
       </div>
     </div>
@@ -44,11 +50,11 @@
 <div class="row">
   <div class="col-lg-12">
     <h3>User Favorites</h3>
-    </div>
+  </div>
 </div>
 
 
-<% @ids = Recipe.pluck(:id) #return an array of ids where rating was 5 %>
+<% @ids = Recipe.pluck(:id) #return an array of ids where rating was 5  %>
 <% @random_five = Recipe.find(@ids).first(6) %>
 
 <div class="row">
@@ -58,7 +64,7 @@
       <div class="col-md-4">
 
         <div>
-          <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class=>"img-responsive img-hover my-image img-rounded"), recipe %>
+          <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class => "img-responsive img-hover my-image img-rounded"), recipe %>
         </div>
 
 
@@ -70,9 +76,8 @@
       <% if @count > 2 %>
           </div> <!-- close row -->
           <div class="row"> <!-- open row -->
-          <% @count = 0 %>
+            <% @count = 0 %>
       <% end %>
-
 
 
   <% end %>
@@ -82,9 +87,6 @@
   <!-- Controls -->
 
 
-
-
-
-<!-- BACK UP -->
+  <!-- BACK UP -->
 
 

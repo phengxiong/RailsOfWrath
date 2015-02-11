@@ -35,3 +35,4 @@ bower.json
 /.idea
 
 config/routes.rb
+app/views/recipes/show.html.erb
