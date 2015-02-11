@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150209014008) do
-=======
 ActiveRecord::Schema.define(version: 20150209024521) do
->>>>>>> d35298520bb6949d6042a2fdcfa8635f8580ee91
 
   create_table "comments", force: true do |t|
     t.string   "author"
@@ -73,11 +69,8 @@ ActiveRecord::Schema.define(version: 20150209024521) do
     t.string   "prepare_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
-    t.integer  "shared"
-=======
     t.string   "author"
->>>>>>> d35298520bb6949d6042a2fdcfa8635f8580ee91
+    t.integer  "shared"
   end
 
   create_table "reviews", force: true do |t|

@@ -9,16 +9,13 @@
 <!-- the FACEBOOK BUTTONS here .... need to change the website  -->
 
 <% @facebook_string = "http://104.236.148.61/recipes/" + @recipe.id.to_s %>
-<h5><%= @facebook_string %></h5>
-<div class="fb-like" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-
-
-
+<!--<h5><%# @facebook_string %></h5>-->
+<div class="fb-like to_hide" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
 <div class="col-md-12 text-center show_page">
 
   <figure class="text-center">
-    <%= image_tag @recipe.picture %>
+    <%= image_tag @recipe.picture%>
   </figure>
 
   <h2><%= @recipe.title %></h2>
@@ -38,7 +35,7 @@
 
   <p><strong>Directions: </strong><%= @recipe.directions %></p>
 
-  <% if user_signed_in? %>
+  <% if is_admin? %>
       <%= link_to 'Edit', edit_recipe_path(@recipe), :class => 'btn btn-default to_hide' %>
   <% end %>
 

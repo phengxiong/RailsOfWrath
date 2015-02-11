@@ -18,7 +18,7 @@ ingredients = ["Mushrooms", "Olives", "Cheese", "Bacon"]
                          title: Commerce.product_name,
                          serving_size: Commerce.price.round(0),
                          directions: Lorem.paragraphs(5).join(" "),
-                         picture: "http://baconmockup.com/300/300",
+                         picture: "http://lorempixel.com/400/200/food",
                          ingredients: ingredients[rand(0..2)],
                          category: Company.suffix,
                          cook_time: Commerce.price.round(0),

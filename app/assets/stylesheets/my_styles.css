@@ -44,11 +44,18 @@ body {
 */
 
 .show_page {
-    border: 1px solid #000000;
-    border-radius: 15px;
-    background-color: lightyellow;
+    /*border: 1px solid #000000;*/
+    /*border-radius: 15px;*/
+    background-color: #EFEFEF;
     padding: 20px 50px;
     margin-bottom: 20px;
     margin-top: 20px;
 
+}
+
+.thread_head{
+    background-color: #EFEFEF;
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 1px solid #000000;
 }

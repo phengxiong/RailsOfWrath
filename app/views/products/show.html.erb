@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', products_path, :class => "to_hide" %>
+<%= link_to 'Back', products_path, :class => "to_hide" %> <br />
 
 <div class="fb-like" data-href="http://localhost:3000/products/37" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
@@ -60,7 +60,7 @@
           <br/>
 
           <div class="actions">
-            <%= f.submit %>
+            <%= f.submit "Add Comment", :class => 'btn btn-success' %>
           </div>
 
       <% end %>
