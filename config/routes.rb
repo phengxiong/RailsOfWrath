@@ -3,9 +3,15 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :recipe_comments
+
     get 'page/:page', :action => :index, :on => :collection
 
   end
+  # /20/add_shared
+
+
+  post 'ajax/sum' => 'recipes#ajax_sum'
+
 
   resources :products do
     resources :reviews

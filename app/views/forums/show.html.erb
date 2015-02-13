@@ -1,79 +1,83 @@
 <p id="notice"><%= notice %></p>
-<h2>Original Post</h2>
-<div class="table table-striped">
-
-<p>
-  <strong>Author:</strong>
-  <%= @forum.author %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @forum.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @forum.content %>
-</p>
-
-<p>
-  <strong>Published date:</strong>
-  <%= @forum.published_date %>
-</p>
-
-</div>
-
-<h2>Comments</h2>
-
-
-<% @forum.comments.each do |comment|%>
-    <hr>
-    <p>
-      <strong>Author: </strong>
-      <%= comment.author%>
-    </p>
-    <p>
-      <strong>Answer: </strong>
-      <%= comment.content%>
-    </p>
-    <p>
-      <strong>Date published: </strong>
-      <%=comment.date_published%>
-    </p>
-<% end%>
-
-
-
-
-<h2>Add Comment</h2>
-
-<%= form_for([@forum, @forum.comments.build]) do |f|%>
-
-
-      <div class="field">
-        <%= f.label :author %><br>
-        <%= f.text_field :author %>
-      </div>
-      <div class="field">
-        <%= f.label :content %><br>
-        <%= f.text_area :content %>
-      </div>
-      <div class="field">
-        <%= f.label :date_published %><br>
-        <%= f.datetime_select :date_published %>
-      </div>
-      <div class="field">
-        <%= f.hidden_field :forum_id %><br>
-
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-  <% end %>
-  <br>
-
-<%= link_to 'Edit', edit_forum_path(@forum) %> |
 <%= link_to 'Back', forums_path %>
+<h2><strong>Thread: <%= @forum.title %></strong></h2>
 
+<div class="table table-striped thread_head">
+
+  <p class="text-right">
+    <%= @forum.published_date.strftime("%m/%d/%y") %>
+  </p>
+
+  <h2>
+    <%= @forum.author %>
+  </h2>
+
+  <p><strong>
+    <%= @forum.title %>
+  </strong>
+  </p>
+
+  <p>
+    <%= @forum.content %>
+  </p>
+
+  <%= time_ago_in_words(@forum.published_date) %> ago
+
+  <br />
+
+  <% if is_admin? %>
+      <%= link_to 'Edit', edit_forum_path(@forum), :class => 'btn btn-default to_hide' %>
+  <% end %>
 </div>
+
+
+<h2 class="voffset6">Comments</h2>
+
+<% @forum.comments.each do |comment| %>
+    <hr>
+    <h3>
+      <%= comment.author %> -
+    </h3>
+
+    <p>
+      <%= comment.content %>
+    </p>
+
+    <p>
+      <%= time_ago_in_words(comment.created_at) %> ago
+    </p>
+
+<% end %>
+
+<% if user_signed_in? %>
+    <h2 class="voffset6">Add Comment</h2>
+
+    <%= form_for([@forum, @forum.comments.build]) do |f| %>
+
+
+        <div class="field">
+          <%= f.hidden_field :author, :value => current_user.username %>
+        </div>
+
+        <div class="field">
+          <%= f.label :content %><br>
+          <%= f.text_area :content %>
+        </div>
+
+        <%= f.hidden_field :date_published %>
+
+        <div class="field">
+          <%= f.hidden_field :forum_id %><br>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Add a Comment", :class => "btn btn-success" %>
+        </div>
+
+    <% end %>
+<% end %>
+<br/>
+
+<% if !user_signed_in? %>
+    <%= link_to 'Login to post a comment', new_user_session_path %>
+<% end %>

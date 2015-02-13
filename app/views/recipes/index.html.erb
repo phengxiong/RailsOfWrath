@@ -14,20 +14,23 @@
     </div>
 
 
-      <% @recipes.each do |recipe| %>
-          <div class="row">
-            <div class="col-md-7">
-              <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class=>"img-responsive img-hover my-image"), recipe %>
-            </div>
-            <div class="col-md-5">
-              <h3><%= recipe.title %></h3>
-              <h4>Category</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-              <%= link_to 'View Recipe', recipe, :class=>"btn btn-primary" %>
-            </div>
+    <% @recipes.each do |recipe| %>
+        <div class="row">
+          <div class="col-md-7">
+            <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class => "img-responsive img-hover my-image"), recipe %>
           </div>
+          <div class="col-md-5">
+            <h3><%= recipe.title %></h3>
+            <h4>Category</h4>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita
+              laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis
+              atque eveniet unde.</p>
+            <%= link_to 'View Recipe', recipe, :class => "btn btn-primary" %>
+          </div>
+        </div>
         <hr>
-      <% end %>
+    <% end %>
 
     <%= paginate @recipes %>
 
@@ -69,7 +72,7 @@
             <td><%= username %></td>
             <td><%= recipe.title %></td>
             <td><%= recipe.serving_size %></td>
-            <td><%= recipe.directions %></td>
+            <td><%= truncate(recipe.directions, length: 200, :escape => false) %></td>
             <td><%= image_tag recipe.picture, class: "img-responsive image-index" %></td>
             <td><%= recipe.ingredients %></td>
             <td><%= recipe.category %></td>
@@ -95,7 +98,6 @@
 
 <div class="col-md-12">
   <div class="center_page">
-
 
 
   </div>

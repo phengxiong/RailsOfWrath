@@ -1,0 +1,40 @@
+@media print {
+    body {
+        font: 12pt "Times New Roman", serif;
+        color: #000000;
+        background: #FFFFFF;
+        margin: 1in;
+        width: 100%;
+        margin: 0px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .to_hide {
+        display: none;
+    }
+
+    .show_page {
+        border: none;
+    }
+
+    #recipe_comments {
+        display: none;
+    }
+
+    .comments {
+        display: none;
+    }
+
+    .page_break {
+        page-break-before: always;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+
