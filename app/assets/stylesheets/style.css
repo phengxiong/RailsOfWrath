@@ -73,7 +73,8 @@ header.carousel {
 .star{
     max-width: 20px;
 }
-<<<<<<< HEAD
+
+/* Fix for popup login */
 
 #humancheck-0, #humancheck-1, #rememberme-0 {
 
@@ -81,5 +82,20 @@ header.carousel {
     margin-left: 0;
 
 }
-=======
->>>>>>> origin/master
+
+.show_page {
+    /*border: 1px solid #000000;*/
+    /*border-radius: 15px;*/
+    background-color: #EFEFEF;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+
+.thread_head{
+    background-color: #EFEFEF;
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 1px solid #000000;
+}
