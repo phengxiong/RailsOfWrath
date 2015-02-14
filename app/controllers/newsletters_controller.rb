@@ -28,6 +28,7 @@ class NewslettersController < ApplicationController
   end
 
   def edit
+
   end
 
   def create

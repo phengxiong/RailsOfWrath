@@ -9,8 +9,7 @@ class UserMailer < ActionMailer::Base
   def newsletter(newsletter, user)
     @newsletter = newsletter
     @greeting = "Hi"
-
-    mail to: user.email
+    mail to: user.email, subject: @newsletter.title
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

@@ -1,6 +1,8 @@
-<h1>Listing newsletters</h1>
 
-<table>
+<% if current_user.try(:admin?)%>
+<h1>Newsletters</h1>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -18,7 +20,7 @@
         <td><%= newsletter.content %></td>
         <td><%= link_to 'Email to Users', mail_newsletter_path( newsletter ) %></td>
         <td><%= link_to 'Show', newsletter %></td>
-        <td><%= link_to 'Edit', edit_newsletter_path(@newsletters) %></td>
+        <td><%= link_to 'Edit', edit_newsletter_path(newsletter) %> </td>
         <td><%= link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -27,4 +29,8 @@
 
 <br>
 
-<%= link_to 'New Newsletter', new_newsletter_path %>
+<h3><%= link_to 'Add New Newsletter', new_newsletter_path %></h3>
+   <%else%>
+
+
+<% end %>
