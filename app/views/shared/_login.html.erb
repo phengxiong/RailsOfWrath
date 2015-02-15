@@ -11,106 +11,96 @@
       </div>
       <div class="modal-body">
         <div id="myTabContent" class="tab-content">
+
           <div class="tab-pane fade active in" id="signin">
-            <form class="form-horizontal">
-              <fieldset>
-                <!-- Sign In Form -->
-                <!-- Text input-->
+
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
                 <div class="control-group">
-                  <label class="control-label" for="userid">Alias:</label>
+                  <%= f.label :email, :class=> "control-label"%><br />
                   <div class="controls">
-                    <input required="" id="userid" name="userid" type="text" class="form-control" placeholder="example@osrecipes.com" class="input-medium" required="">
+                    <%= f.email_field :email, autofocus: true, :class => "form-control input-medium", :required => true  %>
                   </div>
                 </div>
 
-                <!-- Password input-->
                 <div class="control-group">
-                  <label class="control-label" for="passwordinput">Password:</label>
+                  <%= f.label :password, :class=> "control-label" %><br />
                   <div class="controls">
-                    <input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
+                    <%= f.password_field :password, autocomplete: "off", :class => "form-control input-medium", :required => true  %>
                   </div>
                 </div>
 
-                <!-- Multiple Checkboxes (inline) -->
-                <div class="control-group">
-                  <label class="control-label" for="rememberme"></label>
-                  <div class="controls input-fix">
-                    <label class="checkbox inline" for="rememberme-0">
-                      <input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me">
-                      Remember me
-                    </label>
-                  </div>
-                </div>
+                <% if devise_mapping.rememberable? -%>
+                    <div class="control-group">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me, :class=> "control-label" %>
+                    </div>
+                <% end -%>
 
-                <!-- Button -->
                 <div class="control-group">
-                  <label class="control-label" for="signin"></label>
-                  <div class="controls">
-                    <button id="signin" name="signin" class="btn btn-success">Sign In</button>
-                  </div>
+                 <div class="controls">
+                   <%= f.submit "Log in", :class => "btn btn-success"  %>
+                 </div>
                 </div>
-              </fieldset>
-            </form>
+            <% end %>
+
+            <%= render "devise/shared/links" %>
+
           </div>
+
           <div class="tab-pane fade" id="signup">
-            <form class="form-horizontal">
-              <fieldset>
-                <!-- Sign Up Form -->
-                <!-- Text input-->
+            <h2>Sign up</h2>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
+                <%= devise_error_messages! %>
+
                 <div class="control-group">
-                  <label class="control-label" for="Email">Email:</label>
+                  <%= f.label :email, :class=> "control-label" %><br />
                   <div class="controls">
-                    <input id="Email" name="Email" class="form-control" type="text" placeholder="Example@repeateats.com" class="input-large" required="">
+                    <%= f.email_field :email, autofocus: true, :class => "form-control input-large", :required => true %>
                   </div>
                 </div>
 
-                <!-- Text input-->
                 <div class="control-group">
-                  <label class="control-label" for="username">Username:</label>
+                  <%= f.label :username, :class=> "control-label" %><br />
                   <div class="controls">
-                    <input id="username" name="userid" class="form-control" type="text" placeholder="Example" class="input-large" required="">
+                    <%= f.text_field :username, :class => "form-control input-large", :required => true %>
                   </div>
                 </div>
 
-                <!-- Password input-->
+
                 <div class="control-group">
-                  <label class="control-label" for="password">Password:</label>
+                  <%= f.label :password, :class=> "control-label" %>
+                  <% if @validatable %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
                   <div class="controls">
-                    <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
-                    <em>1-8 Characters</em>
+                    <%= f.password_field :password, autocomplete: "off", :class => "form-control input-large", :required => true %>
                   </div>
                 </div>
 
-                <!-- Text input-->
                 <div class="control-group">
-                  <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
+                  <%= f.label :password_confirmation, :class=> "control-label" %><br />
                   <div class="controls">
-                    <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large" required="">
+                    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control input-large", :required => true %>
                   </div>
                 </div>
 
-                <!-- Multiple Radios (inline) -->
-                <br>
-                <div class="control-group">
-                  <label class="control-label" for="humancheck">Humanity Check:</label>
-                  <div class="controls input-fix">
-                    <label class="radio inline" for="humancheck-0">
-                      <input type="radio" name="humancheck" id="humancheck-0" value="robot" checked="checked">I'm a Robot</label>
-                    <label class="radio inline" for="humancheck-1">
-                      <input type="radio" name="humancheck" id="humancheck-1" value="human">I'm Human</label>
-                  </div>
-                </div>
+                <% if devise_mapping.rememberable? -%>
+                    <div class="control-group">
+                      <%= f.check_box :newsletter %>
+                      <%= f.label :newsletter, :class=> "control-label" %>
+                    </div>
+                <% end -%>
 
-                <!-- Button -->
-                <div class="control-group">
-                  <label class="control-label" for="confirmsignup"></label>
-                  <div class="controls">
-                    <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
-                  </div>
+                <div class="actions">
+                  <%= f.submit "Sign up", :class => "btn btn-success" %>
                 </div>
-              </fieldset>
-            </form>
+            <% end %>
+
+            <%= render "devise/shared/links" %>
+
           </div>
+
         </div>
       </div>
       <div class="modal-footer">
