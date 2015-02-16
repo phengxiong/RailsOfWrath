@@ -17,8 +17,9 @@
   </div>
 
   <div class="field">
+    <%= tinymce %>
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class => 'tinymce', :rows => 10, :cols => 120 %>
   </div>
 
   <div class="field">

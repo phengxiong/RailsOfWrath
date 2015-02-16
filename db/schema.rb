@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150209024521) do
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "quantity"
     t.float    "price"
     t.float    "cost"
@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 20150209024521) do
     t.string   "prepare_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "author"
     t.integer  "shared"
+    t.string   "author"
   end
 
   create_table "reviews", force: true do |t|
