@@ -4,19 +4,7 @@ class RecipesController < ApplicationController
   respond_to :html, :js
 
 
-  def ajax_sum
 
-
-    id = params["recipe_id"].to_i
-    a = Recipe.find(id).shared += 1
-    a.save
-
-    result = "added shared to table boi!!"
-
-    respond_to do |format|
-      format.json {render :json => {:result => result}}
-      end
-  end
 
   def favorites
 
@@ -30,9 +18,6 @@ class RecipesController < ApplicationController
   end
 
   def index
-
-    ids = Recipe.pluck(:id) #return an array of ids where rating was 5
-    @random_five = Recipe.find(ids).first(5)
 
     @recipes = Recipe.all.page params[:page]
     respond_with(@recipes)

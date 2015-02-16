@@ -10,8 +10,8 @@
 
 <% @facebook_string = "http://104.236.148.61/recipes/" + @recipe.id.to_s %>
 <!--<h5><%# @facebook_string %></h5>-->
-<div id="fb_div" class="fb-like to_hide" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
+<div id="fb_div" class="fb-like to_hide" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 <%= link_to "Favorite this", "/favorites/#{@recipe.id}", :class => "link" %>
 <p><%= @recipe.title %> has been favorited <strong><%= @shared_count %></strong> times</p>
 

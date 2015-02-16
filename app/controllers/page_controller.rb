@@ -1,8 +1,9 @@
 class PageController < ApplicationController
+  respond_to :html, :js
+
   def home
 
 
-    respond_with(@recipe)
   end
 
   def login
