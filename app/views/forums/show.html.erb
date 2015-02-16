@@ -50,7 +50,7 @@
 <% end %>
 
 <% if user_signed_in? %>
-    <h2 class="voffset6">Add Comment</h2>
+    <h3>Leave a comment</h3>
 
     <%= form_for([@forum, @forum.comments.build]) do |f| %>
 
@@ -60,9 +60,10 @@
         </div>
 
         <div class="field">
-          <%= f.label :content %><br>
-          <%= f.text_area :content %>
+          <%= f.text_area :content, :class=>"tinymce" %>
         </div>
+
+        <%= tinymce %>
 
         <%= f.hidden_field :date_published %>
 
