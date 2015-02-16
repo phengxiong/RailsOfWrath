@@ -1,7 +1,6 @@
 class PageController < ApplicationController
   def home
 
-
     respond_with(@recipe)
   end
 

@@ -56,10 +56,11 @@
 
 <% @ids = Recipe.pluck(:id) #return an array of ids where rating was 5  %>
 <% @random_five = Recipe.find(@ids).first(6) %>
+<% @recipes = Recipe.order(shared: :asc).limit(6)%>
 
 <div class="row">
   <% @count = 0 %>
-  <% @random_five.each do |recipe| %>
+  <% @recipes.each do |recipe| %>
 
       <div class="col-md-4">
 
