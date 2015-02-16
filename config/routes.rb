@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   # /20/add_shared
 
+  get '/product_favorites/:id', to: 'products#favorites'
 
   post 'ajax/sum' => 'recipes#ajax_sum'
 
