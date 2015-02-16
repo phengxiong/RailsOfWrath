@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :js
 
 
   def ajax_sum
@@ -18,6 +18,17 @@ class RecipesController < ApplicationController
       end
   end
 
+  def favorites
+
+    @shared = 0
+    @shared_recipe = Recipe.find_by_id(params[:id]) #get the id from the url hash
+    #a = Recipe.find(id).shared += 1
+    @shared_recipe.increment(:shared)
+    @shared_recipe.save
+
+    redirect_to "/recipes/#{@shared_recipe.id}"
+  end
+
   def index
 
     ids = Recipe.pluck(:id) #return an array of ids where rating was 5
@@ -28,8 +39,11 @@ class RecipesController < ApplicationController
   end
 
   def show
+
+    @shared_count = Recipe.find(params[:id]).shared
     @recipes = Recipe.all.page params[:page]
     respond_with(@recipe)
+
   end
 
   def new

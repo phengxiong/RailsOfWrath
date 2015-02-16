@@ -3,22 +3,37 @@
 <head>
   <title>Repeat Eats</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <!--script for facebook buttons to work-->
+  <div id="fb-root"></div>
+  <script type="text/javascript">(function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="print_styles.css" media="print"/>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<!--script for facebook buttons to work-->
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        var id = $('#fb_div').attr('data-id'); //get the id from the url from the data attribute
+
+        $("#link").click(function(){
+            $(this).css("background-color", "red");
+        });
+
+    });
 </script>
 
 <%= render 'shared/header' %>
