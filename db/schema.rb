@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20150216013653) do
     t.datetime "updated_at"
   end
 
+  create_table "newsletters", force: true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.string   "description"
