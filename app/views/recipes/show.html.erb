@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', recipes_path, :class => "to_hide" %>
+<%= link_to 'Back', recipes_path, :class => "to_hide" %> <br />
 
 <% @recipes.each do |recipe| %>
     <% @username = User.find(recipe.user_id).username %>
@@ -11,6 +11,10 @@
 <% @facebook_string = "http://104.236.148.61/recipes/" + @recipe.id.to_s %>
 <!--<h5><%# @facebook_string %></h5>-->
 <div class="fb-like to_hide" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+<!-- Twitter Button -->
+<div><a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="repeateats">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 
 <div class="col-md-12 text-center show_page">
 
