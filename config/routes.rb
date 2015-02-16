@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+    #Call the mail action on the newsletter controller!
+  get "newsletter/:id/mail" => "newsletters#mail", :as => 'mail_newsletter'
+
+  resources :newsletters
 
   resources :recipes do
     resources :recipe_comments
@@ -38,7 +42,7 @@ Rails.application.routes.draw do
 
     get '/recipes', to: 'recipes#index'
     get '/forum', to: 'forums#index'
-
+  get 'articles', to: "articles#index"
 
     resources :logins
 
