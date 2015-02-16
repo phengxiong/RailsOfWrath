@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209024521) do
+ActiveRecord::Schema.define(version: 20150216013653) do
 
   create_table "comments", force: true do |t|
     t.string   "author"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150209024521) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "favorites"
   end
 
   create_table "recipe_comments", force: true do |t|
