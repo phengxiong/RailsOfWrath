@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     resources :products, :path => "store/products"
 
 
-    root 'page#home'
+    root 'page#Home'
 
     get '/recipes', to: 'recipes#index'
     get '/forum', to: 'forums#index'
