@@ -43,7 +43,8 @@ Rails.application.routes.draw do
     get '/recipes', to: 'recipes#index'
     get '/forum', to: 'forums#index'
   get 'articles', to: "articles#index"
-
+  get 'contactUs' => "page#contactUs"
+  post 'contactUs' => 'page#contactUs'
     resources :logins
 
     devise_for :users
