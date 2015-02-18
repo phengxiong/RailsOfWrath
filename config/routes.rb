@@ -38,12 +38,13 @@ Rails.application.routes.draw do
     resources :products, :path => "store/products"
 
 
-    root 'page#home'
+    root 'page#Home'
 
     get '/recipes', to: 'recipes#index'
     get '/forum', to: 'forums#index'
   get 'articles', to: "articles#index"
-
+  get 'contactUs' => "page#contactUs"
+  post 'contactUs' => 'page#contactUs'
     resources :logins
 
     devise_for :users

@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
   #
   def newsletter(newsletter, user)
     @newsletter = newsletter
-    @greeting = "Hi"
+    @greeting = "Repeat Eats Newsletter!"
     mail to: user.email, subject: @newsletter.title
   end
 
@@ -17,9 +17,30 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.contactUs.subject
   #
-  def contactUs
-    @greeting = "Hi"
 
-    mail to: "to@example.org"
+
+
+  def contactUs(name, email, phone, question,contact_pref)
+    @contact_pref = contact_pref
+    @name = name
+    @email = email
+    @phone = phone
+    @question = question
+    @greeting =  @name + " " + "Has a question!"
+    @subject = "User Question"
+
+    mail to: "bubba99207@gmail.com" , subject: @subject
   end
+
+  def thankyou(name, email, phone, question, contact_pref)
+    @contact_pref = contact_pref
+    @name = name
+    @email = email
+    @phone = phone
+    @question = question
+    @subject =  @name
+    @greeting = ("Thank you for Contacting us" + " " + @name )
+    mail to: email, subject: @subject
+  end
+
 end
