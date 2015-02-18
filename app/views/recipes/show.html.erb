@@ -18,7 +18,7 @@
   <div class="show_page">
     <div class="row">
 
-      <figure class="col-lg-4">
+      <figure class="col-sm-4">
         <%= image_tag @recipe.picture, :class => "text-center" %><br/> <br/>
 
         <%= link_to "Favorite this", "/favorites/#{@recipe.id}", :class => "btn btn-primary" %><br/><br/>
@@ -41,7 +41,7 @@
         </div>
       </figure>
 
-      <div class="col-lg-4">
+      <div class="col-sm-4">
         <h2><%= @recipe.title %></h2>
 
         <p><strong>Recipe by: </strong><%= @username %></p>
@@ -56,7 +56,7 @@
         <p><strong>Serving size: </strong><%= @recipe.serving_size %></p>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-sm-4">
         <strong>Description:</strong>
 
         <p><%= @recipe.description %></p>
