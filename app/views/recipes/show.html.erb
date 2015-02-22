@@ -12,14 +12,20 @@
 <!--<h5><%# @facebook_string %></h5>-->
 
 <div id="fb_div" class="fb-like to_hide" data-href="<%= @facebook_string %>" data-width="352" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+<!-- Twitter Button -->
+<div><a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="repeateats">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+
+<!-- Pinterest Button -->
+<div><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" /></a>
+  <!-- Please call pinit.js only once per page -->
+  <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script></div>
+
 <%= link_to "Favorite this", "/favorites/#{@recipe.id}", :class => "link" %>
 <p><%= @recipe.title %> has been favorited <strong><%= @shared_count %></strong> times</p>
 
 
-
-<!-- Twitter Button -->
-<div><a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="repeateats">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 
 <div class="col-md-12 text-center show_page">
 
