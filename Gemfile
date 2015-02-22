@@ -44,3 +44,5 @@ gem 'devise'
 gem 'faker'
 
 gem 'kaminari'
+
+gem 'paperclip'

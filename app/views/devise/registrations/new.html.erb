@@ -28,12 +28,17 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
   </div>
 
-    <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.check_box :newsletter %>
-          <%= f.label :newsletter %>
-        </div>
-    <% end -%>
+  <div class="field">
+    <%= f.label :avatar %> <i>(upload an avatar)</i><br />
+    <%= form.file_field :avatar %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :newsletter %>
+        <%= f.label :newsletter %>
+      </div>
+  <% end -%>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
