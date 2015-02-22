@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216061327) do
+ActiveRecord::Schema.define(version: 20150218045129) do
 
   create_table "comments", force: true do |t|
     t.string   "author"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150216061327) do
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.text     "description"
+    t.string   "description"
     t.integer  "quantity"
     t.float    "price"
     t.float    "cost"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150216061327) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "favorites"
+    t.string   "category"
   end
 
   create_table "recipe_comments", force: true do |t|
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150216061327) do
     t.datetime "updated_at"
     t.integer  "shared"
     t.string   "author"
+    t.text     "description"
   end
 
   create_table "reviews", force: true do |t|

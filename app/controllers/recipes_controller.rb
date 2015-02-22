@@ -25,6 +25,7 @@ class RecipesController < ApplicationController
 
   def show
 
+
     @shared_count = Recipe.find(params[:id]).shared
     @recipes = Recipe.all.page params[:page]
     respond_with(@recipe)
