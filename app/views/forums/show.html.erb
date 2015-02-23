@@ -18,12 +18,12 @@
   </p>
 
   <p>
-    <%= @forum.content %>
+    <%= @forum.content.html_safe %>
   </p>
 
   <%= time_ago_in_words(@forum.published_date) %> ago
 
-  <br />
+  <br/>
 
   <% if is_admin? %>
       <%= link_to 'Edit', edit_forum_path(@forum), :class => 'btn btn-default to_hide' %>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="field">
-          <%= f.text_area :content, :class=>"tinymce" %>
+          <%= f.text_area :content, :class => "tinymce" %>
         </div>
 
         <%= tinymce %>

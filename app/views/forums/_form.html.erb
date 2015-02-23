@@ -1,34 +1,49 @@
-<%= form_for(@forum) do |f| %>
-  <% if @forum.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@forum.errors.count, "error") %> prohibited this forum from being saved:</h2>
+<div class="row">
+  <div class="col-md-6">
 
-      <ul>
-      <% @forum.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_for(@forum) do |f| %>
+        <% if @forum.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@forum.errors.count, "error") %> prohibited this forum from being saved:</h2>
+
+              <ul>
+                <% @forum.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
 
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
+        <div class="field">
+          <%= f.hidden_field :author, :value => current_user.username %>
+        </div>
+
+        <div class="field">
+          <%= f.label :title %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :content %><br>
+          <%= f.text_area :content, class: "form-control tinymce" %>
+        </div>
+
+        <%= tinymce %>
+
+        <div class="field">
+          <% time = Time.new%>
+          <%= f.hidden_field :published_date, :value => time %>
+        </div>
+
+        <br/>
+
+        <div class="actions">
+          <%= f.submit 'Add Topic', :class => 'btn btn-success' %>
+        </div>
+
+    <% end %>
+
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :published_date %><br>
-    <%= f.datetime_select :published_date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+<br/>

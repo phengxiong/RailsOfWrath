@@ -1,74 +1,110 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', products_path, :class => "to_hide" %> <br />
+<%= link_to 'Back', products_path, :class => "to_hide" %> <br/> <br/>
 
 <% @fb_string = "http://104.236.148.61/products/" + @product.id.to_s %>
 
-<div class="fb-like" data-href="<% @fb_string %>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+<p><strong><%= @product.name %></strong> has been favorited
 
-<%= link_to "Favorite Product", "/product_favorites/#{@product.id}", :class => "link"%>
-<p><%= @product.name%> has been favorited <strong><%= @favorite_count%></strong> times</p>
-
-<div class="col-md-12 text-center show_page">
-
-  <figure>
-    <%= image_tag @product.image %>
-  </figure>
-
-  <h2><%= @product.name %></h2>
-
-  <p class="text-justify"><%= @product.description.html_safe %></p>
-
-  <p><strong>Quantity: </strong><%= @product.quantity %></p>
-
-  <p><strong>Price: </strong><%= number_to_currency(@product.price) %></p>
-
-  <p><strong>Weight: </strong><%= number_with_precision(@product.weight, precision: 2) + " lbs" %></p>
-
-  <% if is_admin? %>
-      <%= link_to 'Edit', edit_product_path(@product), :class => 'btn btn-default to_hide' %>
+  <% if @favorite_count.nil? %>
+      <strong>0</strong> times</p>
+  <% else %>
+      <strong><%= @favorite_count %></strong> times</p>
   <% end %>
 
-</div>
+  <div class="show_page">
+    <div class="row">
+
+      <figure class="col-md-4">
+        <%= image_tag @product.image, :class => "text-center" %> <br/> <br/>
+
+        <%= link_to "Favorite Product", "/product_favorites/#{@product.id}", :class => "btn btn-primary" %> <br/> <br/>
+
+        <div class="fb-like" data-href="
+        <% @fb_string %>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true">
+        </div>
+
+        <!-- Twitter Button -->
+        <div><a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="repeateats">Tweet</a>
+          <script>!function (d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+              if (!d.getElementById(id)) {
+                  js = d.createElement(s);
+                  js.id = id;
+                  js.src = p + '://platform.twitter.com/widgets.js';
+                  fjs.parentNode.insertBefore(js, fjs);
+              }
+          }(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <!-- Pinterest Button -->
+        <div><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" /></a>
+          <!-- Please call pinit.js only once per page -->
+          <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script></div>
+      </figure>
 
 
-<div class="comments">
-  <% @product.reviews.each do |review| %>
-      <p><strong><%= review.author %></strong> said:</p>
+      <div class="col-md-4">
 
-      <p><%= review.comment %></p>
+        <h2><%= @product.name %></h2>
 
-      <%= (image_tag('star.jpg', height: '15', width: '15') * review.rating).html_safe %> <br/>
-      <% if is_admin? %>
-          <%= link_to 'Remove', product_review_path(@product, review), method: :delete, data: {confirm: 'Are you sure?'} %>
-      <% end %>
-      <hr>
-  <% end %>
+        <p><strong>Quantity: </strong><%= @product.quantity %></p>
 
-  <% if !user_signed_in? %>
-      <%= link_to 'Login to post review', new_user_session_path %>
-  <% end %>
-  <h3>Leave a comment</h3>
-  <% if user_signed_in? %>
-      <%= form_for([@product, @product.reviews.build]) do |f| %>
-          <%= f.hidden_field :product_id %>
-          <%= f.hidden_field :author, :value => current_user.username %>
+        <p><strong>Price: </strong><%= number_to_currency(@product.price) %></p>
 
-          <div class="field">
-            <%= f.text_area :comment, :class => "tinymce form-control" %>
-          </div>
-          <%= tinymce %>
+        <p><strong>Weight: </strong><%= number_with_precision(@product.weight, precision: 2) + " lbs" %></p>
 
-          <div class="field">
-            <%= f.label :rating %><br>
-            <%= f.select :rating, options_for_select(1..5) %>
-          </div>
-          <br/>
+        <% if is_admin? %>
+            <%= link_to 'Edit', edit_product_path(@product), :class => 'btn btn-default to_hide' %>
+        <% end %>
+      </div>
 
-          <div class="actions">
-            <%= f.submit "Add Comment", :class => 'btn btn-success' %>
-          </div>
+      <div class="col-md-4">
+        <p class="text-justify"><%= @product.description.html_safe %></p>
+      </div>
 
-      <% end %>
-  <% end %>
-</div>
+
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="comments">
+    <% @product.reviews.each do |review| %>
+        <p><strong><%= review.author %></strong> said:</p>
+
+        <p><%= review.comment %></p>
+
+        <%= (image_tag('star.jpg', height: '15', width: '15') * review.rating).html_safe %> <br/>
+        <% if is_admin? %>
+            <%= link_to 'Remove', product_review_path(@product, review), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% end %>
+        <hr>
+    <% end %>
+
+    <% if !user_signed_in? %>
+        <%= link_to 'Login to post review', new_user_session_path %>
+    <% end %>
+    <h3>Leave a comment</h3>
+    <% if user_signed_in? %>
+        <%= form_for([@product, @product.reviews.build]) do |f| %>
+            <%= f.hidden_field :product_id %>
+            <%= f.hidden_field :author, :value => current_user.username %>
+
+            <div class="field">
+              <%= f.text_area :comment, :class => "tinymce form-control" %>
+            </div>
+            <%= tinymce %>
+
+            <div class="field">
+              <%= f.label :rating %><br>
+              <%= f.select :rating, options_for_select(1..5) %>
+            </div>
+            <br/>
+
+            <div class="actions">
+              <%= f.submit "Add Comment", :class => 'btn btn-success' %>
+            </div>
+
+        <% end %>
+    <% end %>
+  </div>
 

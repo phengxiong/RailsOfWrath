@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 
 
 
+
   def favorites
 
     @shared = 0
