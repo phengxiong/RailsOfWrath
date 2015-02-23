@@ -6,6 +6,10 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
 
   #ADDED THIS FROM DEVISE DOCUMENTATION
+  #Paperclip.options[:command_path] = "/Program Files/ImageMagick-6.9.0-Q16/convert.exe"
+  #Paperclip.options[:command_path] = "/Windows/System32/convert.exe"
+  Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
+
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.cache_classes = false

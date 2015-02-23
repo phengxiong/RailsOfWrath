@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', recipes_path, :class => "to_hide" %> <br />
+<%= link_to 'Back', recipes_path, :class => "to_hide" %> <br/>
 
 <% @recipes.each do |recipe| %>
     <% @username = User.find(recipe.user_id).username %>
@@ -19,7 +19,16 @@
 
 <!-- Twitter Button -->
 <div><a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="repeateats">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+  <script>!function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+      }
+  }(document, 'script', 'twitter-wjs');</script>
+</div>
 
 <div class="col-md-12 text-center show_page">
 
@@ -50,6 +59,7 @@
 
 </div>
 
+
 <div class="comments">
   <!-- comments -->
   <table class="table table-striped">
@@ -64,8 +74,12 @@
                 <% rating = 1 %>
             <% end %>
 
+
+
+
             <div class="col-md-2">
               <%= image_tag recipe.image, class: "avatar img-responsive img-circle" %>
+              <a href="C:\Users\Radmation\Desktop\RailsOfWrath\public\system\users\avatars\000\000\002\original\" + <% recipe.image %> ></a>
               <h4><%= recipe.author %></h4>
 
               <%= (image_tag("star.png", :class => "star") * recipe.rating).html_safe %>
@@ -88,6 +102,13 @@
       <%= link_to 'Login to post a comment', new_user_session_path %>
   <% end %>
 
+
+
+
+
+
+
+
   <!--  Comment form -->
   <% if user_signed_in? %>
 
@@ -101,6 +122,12 @@
               <%= f.hidden_field :author, :value => current_user.username %>
             </div>
 
+
+            <%= current_user.avatar_file_name %>
+
+
+
+
             <div class="field form-group">
               <%= f.text_area :opinion, class: "form-control tinymce", :escape => false %>
             </div>
@@ -111,7 +138,14 @@
               <%= f.label :rating %>
               <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
             </div>
+
             <%= f.hidden_field :recipe_id %>
+
+            <div class="field form-group">
+              <%= f.label :image %>
+              <%= f.text_field :image %>
+            </div>
+
             <div class="actions form-group">
               <br>
               <%= f.submit 'Add Comment', :class => 'btn btn-success' %>
