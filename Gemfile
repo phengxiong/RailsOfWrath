@@ -47,5 +47,4 @@ gem 'kaminari'
 
 gem 'tinymce-rails'
 
-
 gem "paperclip", "~> 4.2"
