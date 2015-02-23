@@ -19,9 +19,6 @@
 
 
 
-
-
-
       <div class="field">
         <h4 class="text-center"><strong><%= current_user.username %></strong></h4>
         <%= image_tag current_user.avatar.url, class: "avatar img-responsive img-circle" %>
@@ -55,7 +52,7 @@
     <% if devise_mapping.rememberable? -%>
         <div class="field">
           <%= f.check_box :newsletter %>
-          <%= f.label :newsletter %>
+          <%= f.label "Subscribe to newsletter" %>
         </div>
     <% end -%>
 

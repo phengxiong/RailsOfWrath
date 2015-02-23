@@ -33,7 +33,7 @@
     <% if devise_mapping.rememberable? -%>
         <div class="field">
           <%= f.check_box :newsletter %>
-          <%= f.label :newsletter %>
+          <%= f.label "Subscribe to Newsletter" %>
         </div>
     <% end -%>
 
@@ -46,10 +46,10 @@
 
 
 
-
+<br>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "btn btn-primary"  %>
   </div>
 <% end %>
 
