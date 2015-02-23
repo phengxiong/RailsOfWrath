@@ -15,14 +15,21 @@
     <%= f.label :recipe_id %><br>
     <%= f.number_field :recipe_id %>
   </div>
+
   <div class="field">
     <%= f.label :author %><br>
     <%= f.text_field :author %>
   </div>
+
+    <div class="field form-group">
+      <%= f.text_field :image, :value => current_user.avatar_file_name %>
+    </div>
+
   <div class="field">
     <%= f.label :opinion %><br>
     <%= f.text_area :opinion %>
   </div>
+
   <div class="field">
     <%= f.label :rating %><br>
     <%= f.number_field :rating %>

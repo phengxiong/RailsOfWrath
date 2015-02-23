@@ -33,6 +33,7 @@ class RecipesController < ApplicationController
   end
 
   def new
+
     @recipe = Recipe.new
     respond_with(@recipe)
   end
