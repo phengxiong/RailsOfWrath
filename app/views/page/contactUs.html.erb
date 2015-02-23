@@ -3,43 +3,46 @@
 <% end %>
 
 
+<div class="row">
+
+  <div class="col-md-4">
+    <h3>Contact Us</h3>
+
+    <%= form_for contactUs_path, id = :method => "POST" do %>
+
+        <div class="">
+          <%= label_tag :name, "Name:" %>
+          <%= text_field_tag :name, @name, {:required => true, class: "form-control"} %><br>
+        </div>
+
+        <div class="field form-group">
+          <%= label_tag :email, "Email:" %>
+          <%= text_field_tag :email, @email, {:required => true, class: "form-control"} %><br>
+        </div>
+
+        <div class="">
+          <%= label_tag :phone, "Phone:" %>
+          <%= text_field_tag :phone, @phone, {:required => true, class: "form-control"} %><br>
+        </div>
+
+        <div class="">
+          <%= label_tag :question, "Question:" %><br>
+          <%= text_area_tag :question, @question, {:required => true, class: "form-control tinymce"} %><br>
+        </div>
+        <%= tinymce %>
+
+        <div class="">
+          <%= label_tag :contact_pref, "Preferred method of contact?" %>
+          <%= radio_button_tag :contact_pref, "Phone", @rad_phone %>Phone:
+          <%= radio_button_tag :contact_pref, "Email", @rad_email %>Email:<br><br>
+        </div>
+
+        <div class="field form-group">
+          <%= submit_tag "Submit", class: "btn btn-primary" %>
+        </div>
 
 
-<div class="col-md-4">
+    <% end %>
+  </div>
 
-  <%= form_for contactUs_path, id = :method => "POST" do %>
-
-      <div class="">
-        <%= label_tag :name, "Name:" %>
-        <%= text_field_tag :name, @name, {:required => true, class: "form-control"} %><br>
-      </div>
-
-      <div class="field form-group">
-        <%= label_tag :email, "Email:" %>
-        <%= text_field_tag :email, @email, {:required => true, class: "form-control"} %><br>
-      </div>
-
-      <div class="">
-        <%= label_tag :phone, "Phone:" %>
-        <%= text_field_tag :phone, @phone, {:required => true, class: "form-control"} %><br>
-      </div>
-
-      <div class="">
-        <%= label_tag :question, "Question:" %><br>
-        <%= text_area_tag :question, @question, {:required => true, class: "form-control tinymce"} %><br>
-      </div>
-      <%= tinymce %>
-
-      <div class="">
-        <%= label_tag :contact_pref, "Preferred method of contact?" %>
-        <%= radio_button_tag :contact_pref, "Phone", @rad_phone %>Phone:
-        <%= radio_button_tag :contact_pref, "Email", @rad_email %>Email:<br><br>
-      </div>
-
-      <div class="field form-group">
-        <%= submit_tag "Submit", class: "btn btn-primary" %>
-      </div>
-
-
-  <% end %>
 </div>
