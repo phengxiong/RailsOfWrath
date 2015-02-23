@@ -1,0 +1,9 @@
+<%= @greeting %>
+<h2>Repeat Eats Newest Recipe!</h2>
+<h3>Title: <%= @recipe.title %></h3>
+Serving Size: <p><%=  @recipe.serving_size %></p>
+Prep Time: <p><%= @recipe.prepare_time %></p>
+Cook Time: <p><%= @recipe.cook_time %></p>
+ingredience: <p><%= @recipe.ingredients %></p>
+Directions<div><%= @recipe.directions %></div>
+Published On: <%= @recipe.created_at %>

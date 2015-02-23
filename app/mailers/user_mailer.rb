@@ -43,4 +43,10 @@ class UserMailer < ActionMailer::Base
     mail to: email, subject: @subject
   end
 
+  def sendRecipe(recipe, user)
+    @recipe = recipe
+    @greeting = "Hello" + user.username
+    @subject =  @recipe.title
+    mail to: user.email, subject: @subject
+  end
 end

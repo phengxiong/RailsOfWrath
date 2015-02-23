@@ -1,9 +1,17 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :mail]
 
   respond_to :html, :js
 
+  def mail
 
+    users = User.all
+
+    users.each do |user|
+      UserMailer.sendRecipe(@recipes, user).deliver
+    end
+    redirect_to recipes_path, notice: 'Recipe was successfully Emailed.'
+  end
 
 
 
@@ -43,8 +51,24 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
-    respond_with(@recipe)
+
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe }
+
+        User.all.each do |user|
+          if (user.newsletter == true)
+            UserMailer.sendRecipe(@recipe, user).deliver
+          end
+        end
+      else
+        format.html { render :new }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
+
+  end
+
   end
 
   def update

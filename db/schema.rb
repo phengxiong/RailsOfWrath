@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150223024756) do
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "quantity"
     t.float    "price"
     t.float    "cost"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20150223024756) do
     t.string   "prepare_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "author"
     t.integer  "shared"
+    t.string   "author"
     t.text     "description"
   end
 
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 20150223024756) do
     t.boolean  "newsletter"
     t.boolean  "vip"
     t.boolean  "admin"
-    t.string   "avatar"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
