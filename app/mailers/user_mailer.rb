@@ -29,7 +29,7 @@ class UserMailer < ActionMailer::Base
     @greeting =  @name + " " + "Has a question!"
     @subject = "User Question"
 
-    mail to: "bubba99207@gmail.com" , subject: @subject
+    mail to: "repeateats@gmail.com" , subject: @subject
   end
 
   def thankyou(name, email, phone, question, contact_pref)
