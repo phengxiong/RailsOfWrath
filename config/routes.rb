@@ -22,20 +22,14 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-
-    resources :forums do
-      resources :comments
-
-    end
-
-    resources :products, :path => "store/products"
+    resources :products, :path => 'store/products'
 
 
     root 'page#Home'
 
     get '/recipes', to: 'recipes#index'
     get '/forum', to: 'forums#index'
-
+    get '/about_us', to: 'page#about_us'
 
     resources :logins
 

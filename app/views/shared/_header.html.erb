@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <%= link_to 'Repeat Eats', root_path, :class => "navbar-brand" %>
+      <%= link_to 'Repeat Eats', root_path, :class => 'navbar-brand' %>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,7 +50,7 @@
           <a href="blog.html">Blog</a>
         </li>
         <li>
-          <a href="about.html">About</a>
+          <%= link_to 'About', about_us_path %>
         </li>
         <li>
           <a href="contact.html">Contact</a>
@@ -60,7 +60,7 @@
           <% if user_signed_in? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= current_user.avatar 'Hello, ' + current_user.username %>
+                <%='Hello, ' + current_user.username %>
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
@@ -78,7 +78,7 @@
   <!-- /.container -->
 </nav>
 
-<% if current_page?(root_url) %>
+<% if current_page?(root_url) || current_page?(about_us_path) %>
 
 
 
