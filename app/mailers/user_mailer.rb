@@ -43,4 +43,8 @@ class UserMailer < ActionMailer::Base
     mail to: email, subject: @subject
   end
 
+  def recipe_posted
+
+  end
+
 end

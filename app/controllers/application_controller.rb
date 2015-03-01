@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
 
-  devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :newsletter, :password, :password_confirmation, :avatar, :avatar_file_path) }
-  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :newsletter, :password, :password_confirmation, :current_password, :avatar, :avatar_file_path) }
+  devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :newsletter, :password, :password_confirmation, :avatar, :avatar_file_path, :appetizer, :breakfast, :lunch, :chicken, :dessert, :healthy, :main_dish, :slow_cooker, :vegetarian) }
+  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :newsletter, :password, :password_confirmation, :current_password, :avatar, :avatar_file_path, :appetizer, :breakfast, :lunch, :chicken, :dessert, :healthy, :main_dish, :slow_cooker, :vegetarian) }
   end
 
 
