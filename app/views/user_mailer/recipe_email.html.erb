@@ -1,4 +1,6 @@
 <h1><%= @recipe.title %></h1>
-<p><%= @recipe.category%>@</p>
-<p><%= @recipe.directions %></p>
+<%= image_tag @recipe.picture %>
+<h4>Category: <%= @recipe.category %></h4>
+<p><strong>Description</strong><br><%= @recipe.description %></p>
+<p><strong>Directions:</strong><br><%= @recipe.directions %></p>
 
