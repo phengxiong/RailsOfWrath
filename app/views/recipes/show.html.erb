@@ -146,6 +146,15 @@
                 <%= f.label :rating %>
                 <%= f.select :rating, options_for_select(1..5), class: "form-control" %>
               </div>
+
+              <div class="field form-group">
+<!--                <%# f.label :image %>
+                <%# f.image :image, class: "form-control" %>-->
+
+                <% image_tag current_user.avatar.url, class: "avatar img-responsive img-circle" %>
+                <%= f.hidden_field :image, :value => current_user.avatar.url %>
+              </div>
+
               <%= f.hidden_field :recipe_id %>
               <div class="actions form-group">
                 <br>

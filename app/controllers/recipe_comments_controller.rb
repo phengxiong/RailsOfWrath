@@ -44,6 +44,6 @@ class RecipeCommentsController < ApplicationController
     end
 
     def recipe_comment_params
-      params.require(:recipe_comment).permit(:recipe_id, :author, :opinion, :rating)
+      params.require(:recipe_comment).permit(:recipe_id, :author, :opinion, :image, :rating)
     end
 end
