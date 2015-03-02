@@ -6,6 +6,11 @@ class PageController < ApplicationController
 
   end
 
+  def about_us
+
+
+  end
+  
   def login
 
   end
