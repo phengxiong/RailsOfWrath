@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20150301205204) do
     t.string   "prepare_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "shared"
     t.string   "author"
+    t.integer  "shared"
     t.text     "description"
   end
 
