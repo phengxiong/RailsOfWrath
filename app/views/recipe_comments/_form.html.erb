@@ -26,8 +26,9 @@
     </div>
 
   <div class="field">
+    <%= tinymce %>
     <%= f.label :opinion %><br>
-    <%= f.text_area :opinion %>
+    <%= f.text_area :opinion, :class => 'tinymce', :rows => 10, :cols => 120 %>
   </div>
 
   <div class="field">

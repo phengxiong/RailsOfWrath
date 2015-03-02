@@ -1,11 +1,11 @@
-Host: 104.236.185.189
+Host: 162.243.130.159
 User: root
 Pass: railspass
 
 SFTP credentials:
-Host: 104.236.185.189
+Host: 162.243.130.159
 User: rails
-Pass: o9VFrhS04j
+Pass: sSlNxjrrCD
 
 MySQL database credentials:
 DB: rails
