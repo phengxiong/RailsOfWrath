@@ -19,17 +19,16 @@ class UserMailer < ActionMailer::Base
   #
 
 
-
-  def contactUs(name, email, phone, question,contact_pref)
+  def contactUs(name, email, phone, question, contact_pref)
     @contact_pref = contact_pref
     @name = name
     @email = email
     @phone = phone
     @question = question
-    @greeting =  @name + " " + "Has a question!"
+    @greeting = @name + " " + "Has a question!"
     @subject = "User Question"
 
-    mail to: "bubba99207@gmail.com" , subject: @subject
+    mail to: "bubba99207@gmail.com", subject: @subject
   end
 
   def thankyou(name, email, phone, question, contact_pref)
@@ -38,12 +37,15 @@ class UserMailer < ActionMailer::Base
     @email = email
     @phone = phone
     @question = question
-    @subject =  @name
-    @greeting = ("Thank you for Contacting us" + " " + @name )
+    @subject = @name
+    @greeting = ("Thank you for Contacting us" + " " + @name)
     mail to: email, subject: @subject
   end
 
-  def recipe_posted
+
+  def recipe_email(recipe, user)
+    @recipe = recipe
+    mail(:to => user.email, subject: "RepeatEats New Recipe " + @recipe.title.capitalize)
 
   end
 

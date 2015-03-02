@@ -3,10 +3,6 @@ class RecipesController < ApplicationController
 
   respond_to :html, :js
 
-
-
-
-
   def favorites
 
     @shared = 0
@@ -19,13 +15,11 @@ class RecipesController < ApplicationController
   end
 
   def index
-
     @recipes = Recipe.all.page params[:page]
     respond_with(@recipes)
   end
 
   def show
-
     @shared_count = Recipe.find(params[:id]).shared
     @recipes = Recipe.all.page params[:page]
     respond_with(@recipe)
@@ -33,7 +27,6 @@ class RecipesController < ApplicationController
   end
 
   def new
-
     @recipe = Recipe.new
     respond_with(@recipe)
   end
@@ -43,9 +36,51 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
 
-    respond_with(@recipe)
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe }
+
+        User.all.each do |user|
+          if (user.appetizer == true && @recipe.category == "Appetizer")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+          if (user.breakfast == true && @recipe.category == "Breakfast")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+          if (user.lunch == true && @recipe.category == "Lunch")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+          if (user.chicken == true && @recipe.category == "Chicken")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+          if (user.healthy == true && @recipe.category == "Healthy")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+          if (user.main_dish == true && @recipe.category == "Main Dish")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+          if (user.slow_cooker == true && @recipe.category == "Slow Cooker")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+          if (user.vegetarian == true && @recipe.category == "Vegetarian")
+            UserMailer.recipe_email(@recipe, user).deliver
+          end
+
+        end
+      else
+        format.html { render :new }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
@@ -59,11 +94,11 @@ class RecipesController < ApplicationController
   end
 
   private
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
-    def recipe_params
-      params.require(:recipe).permit(:user_id, :title, :serving_size, :directions, :picture, :ingredients, :category, :cook_time, :prepare_time)
-    end
+  def recipe_params
+    params.require(:recipe).permit(:user_id, :title, :serving_size, :directions, :picture, :ingredients, :category, :cook_time, :prepare_time)
+  end
 end

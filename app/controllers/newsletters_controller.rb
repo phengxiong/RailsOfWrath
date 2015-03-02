@@ -11,6 +11,15 @@ class NewslettersController < ApplicationController
     redirect_to newsletters_path, notice: 'Newsletter was successfully sent.!'
     end
 
+  t.boolean  "appetizer"
+  t.boolean  "breakfast"
+  t.boolean  "lunch"
+  t.boolean  "chicken"
+  t.boolean  "dessert"
+  t.boolean  "healthy"
+  t.boolean  "main_dish"
+  t.boolean  "slow_cooker"
+  t.boolean  "vegetarian"
 
 
   def index

@@ -21,7 +21,8 @@ ingredients = ["Mushrooms",
 
 
 recipe_category = ["Appetizer",
-                   "Breakfast & Lunch",
+                   "Breakfast",
+                   "Lunch",
                    "Chicken",
                    "Dessert",
                    "Healthy",
