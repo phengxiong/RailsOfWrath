@@ -10,7 +10,7 @@ class PageController < ApplicationController
 
 
   end
-  
+
   def login
 
   end
