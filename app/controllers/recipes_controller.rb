@@ -19,6 +19,11 @@ class RecipesController < ApplicationController
     respond_with(@recipes)
   end
 
+  def search
+    @recipes = Recipe.all
+    respond_with(@recipes)
+  end
+
   def show
     @shared_count = Recipe.find(params[:id]).shared
     @recipes = Recipe.all.page params[:page]

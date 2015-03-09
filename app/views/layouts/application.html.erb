@@ -3,7 +3,6 @@
 <head>
   <title>Repeat Eats</title>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <!--script for facebook buttons to work-->
   <div id="fb-root"></div>
   <script type="text/javascript">(function (d, s, id) {
@@ -16,9 +15,10 @@
 
   }(document, 'script', 'facebook-jssdk'));
   </script>
-
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="print_styles.css" media="print"/>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

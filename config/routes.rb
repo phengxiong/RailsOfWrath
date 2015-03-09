@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   end
   # /20/add_shared
-
   get '/product_favorites/:id', to: 'products#favorites'
 
 
@@ -32,11 +31,12 @@ Rails.application.routes.draw do
 
   resources :products, :path => "store/products"
 
-get '/about_us', to: 'page#about_us'
+  get '/about_us', to: 'page#about_us'
 
   root 'page#Home'
 
   get '/recipes', to: 'recipes#index'
+  get '/search/recipes', to: 'recipes#search'
   get '/forum', to: 'forums#index'
   get 'articles', to: "articles#index"
   get 'contactUs' => "page#contactUs"

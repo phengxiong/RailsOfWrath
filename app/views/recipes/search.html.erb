@@ -1,0 +1,46 @@
+<h2>Search</h2>
+<div id="users">
+  <input class="search" placeholder="Search"/>
+  <button class="sort" data-sort="name">Sort by Name</button>
+  <button class="sort" data-sort="born">Sort by Category</button>
+  <ul class="list">
+    <% @recipes.each do |recipe| %>
+
+        <div class="col-md-3 item">
+          <%= link_to (image_tag "http://lorempixel.com/700/300/food?#{rand(0.0..1.0)}", :class => "img-responsive img-hover my-image img-rounded"), recipe %>
+
+          <h5 class="born category text-center text-primary"><%= recipe.category %></h5>
+
+          <h5 class="name title-overlay text-center text-primary"><%= recipe.title %></h5>
+
+
+
+          <p class="up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita
+            laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis
+            atque eveniet unde.</p>
+
+        </div>
+
+    <% end %>
+  </ul>
+  <div class="col-md-12">
+    <hr>
+    <input class="search" placeholder="Search"/>
+    <button class="sort" data-sort="name">Sort by Name</button>
+    <button class="sort" data-sort="born">Sort by Category</button>
+  </div>
+</div>
+
+
+
+
+<script src="http://listjs.com/no-cdn/list.js"></script>
+<script type="text/javascript">
+    var options = {
+        valueNames: [
+            'name',
+            'born'
+        ]
+    };
+    var userList = new List('users', options);
+</script>
