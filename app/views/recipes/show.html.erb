@@ -41,12 +41,42 @@
         </div>
 
         <!-- Pinterest Button -->
-        <div><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" /></a>
+        <div>
+          <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png"/></a>
           <!-- Please call pinit.js only once per page -->
-          <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script></div>
+          <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+        </div>
 
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <div class="g-plus" data-action="share" ... ></div>
+        <div class="g-plus" data-action="share" ...></div>
+
+        <script type="text/javascript">
+            function GetThis(T, C, U, L) {
+                var targetUrl = 'http://www.myspace.com/Modules/PostTo/Pages/?”' + 't=' + encodeURIComponent(T)
+                        + '&c=' + encodeURIComponent(C) + '&u=' + encodeURIComponent(U) + '&l=' + L;
+                window.open(targetUrl);
+            }
+        </script>
+
+
+        <a href="javascript:GetThis('<%= @recipe.title%>', '<%= @recipe.description%> ', 'http://localhost:3000/recipes/758',
+'2')">
+          <img src="http://cms.myspacecdn.com/cms/post_myspace_icon.gif" border="0" alt="Post to MySpace!"/>
+          Share on MySpace
+        </a>
+
+        <!--<form id="myspacepostto" method="post" action="http://www.myspace.com/index.cfm?fuseaction=postto"-->
+        <!--target="_blank">-->
+        <!--<input type="hidden" name="t" value="An Important News Article Title" />-->
+        <!--<input type="hidden" name="c" value="" />-->
+        <!--<input type="hidden" name="u" value="http://www.newssite.com/article.php?id=123" />-->
+        <!--<input type="hidden" name="l" value="3" />-->
+        <!--<a href="#" onclick="document.getElementById('myspacepostto').submit();return false;">-->
+        <!--<img src="http://cms.myspacecdn.com/cms/post_myspace_icon.gif" border="0" alt="Post to MySpace!" />-->
+        <!--Share on MySpace-->
+        <!--</a>-->
+        <!--</form>-->
+
       </figure>
 
       <div class="col-md-4">
@@ -79,11 +109,11 @@
       <p><strong>Directions: </strong><%= @recipe.directions %></p>
     </div>
     <br/>
-    <% if ! @recipe.youtube.nil?%>
-    <div>
-      <iframe width="420" height="315" src="http://www.youtube.com/embed/<%= @recipe.youtube %>" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <% end%>
+    <% if !@recipe.youtube.nil? %>
+        <div>
+          <iframe width="420" height="315" src="http://www.youtube.com/embed/<%= @recipe.youtube %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+    <% end %>
 
     <% if is_admin? %>
         <%= link_to 'Edit', edit_recipe_path(@recipe), :class => 'btn btn-default to_hide' %>
@@ -153,7 +183,7 @@
               </div>
 
               <div class="field form-group">
-<!--                <%# f.label :image %>
+                <!--                <%# f.label :image %>
                 <%# f.image :image, class: "form-control" %>-->
 
                 <% image_tag current_user.avatar.url, class: "avatar img-responsive img-circle" %>
