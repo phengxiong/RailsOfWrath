@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   respond_to :html, :js
 
+
   def favorites
 
     @shared = 0
@@ -99,6 +100,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :title, :serving_size, :directions, :description, :picture, :ingredients, :category, :cook_time, :prepare_time)
+    params.require(:recipe).permit(:user_id, :title, :serving_size, :directions, :description, :picture, :ingredients, :category, :cook_time, :prepare_time, :youtube)
   end
 end
